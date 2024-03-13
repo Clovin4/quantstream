@@ -20,7 +20,7 @@ class AlphaVantage:
         self.api_key = api_key
         self.base_url = "https://www.alphavantage.co/query?"
 
-    def get_data(self, function, interval, symbol):
+    def get_intraday(self, function, interval, symbol):
         url = f"{self.base_url}function={function}&symbol={symbol}&interval={interval}&apikey={self.api_key}"
         logging.info(f"Requesting data from {url}")
         r = requests.get(url)
@@ -30,6 +30,7 @@ class AlphaVantage:
         # Convert data to xarray here
         # This will depend on the structure of the data
         # xarray_data = xr.DataArray(data)
+        print(interval)
         dates = np.array(
             list(data[f"Time Series ({interval})"].keys())[1:], dtype="datetime64[D]"
         )
@@ -64,7 +65,7 @@ if __name__ == "__main__":
     # print("Hello World!")
     av = AlphaVantage(api_key)
     print(av.base_url)
-    data = av.get_data("TIME_SERIES_INTRADAY", "5min", "IBM")
+    data = av.get_intraday("TIME_SERIES_INTRADAY", "5min", "IBM")
 
     attrs = data.attrs
     print(attrs)

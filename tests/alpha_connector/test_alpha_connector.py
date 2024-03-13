@@ -14,12 +14,12 @@ from alpha_connector.alpha_connector import AlphaVantage
     ("function", "interval", "symbol"),
     [
         ("TIME_SERIES_INTRADAY", "5min", "IBM"),
-        ("TIME_SERIES_DAILY", "1min", "AAPL"),
-        ("TIME_SERIES_WEEKLY", "15min", "GOOGL"),
+        ("TIME_SERIES_INTRADAY", "1min", "AAPL"),
+        ("TIME_SERIES_INTRADAY", "15min", "GOOGL"),
     ],
 )
 def test_get_data(function, interval, symbol):
     """Test get_data method."""
     av = AlphaVantage(API_KEY)
-    data = av.get_data(function, interval, symbol)
+    data = av.get_intraday(function, interval, symbol)
     assert data is not None
