@@ -1,13 +1,48 @@
 import json
 
+import numpy as np
+import pandas as pd
 import xarray as xr
 
 
-def json_to_xarray(json_data):
-    # Load JSON data
-    data = json.loads(json_data)
+def verify_json(data):
+    if "Error Message" in data:
+        raise ValueError(data["Error Message"])
+    elif "Information" in data:
+        raise ValueError(data["Information"])
+    elif "Note" in data:
+        raise ValueError(data["Note"])
+    else:
+        return True
 
-    # Convert JSON data to xarray dataset
-    dataset = xr.Dataset.from_dict(data)
 
-    return dataset
+def json_to_xarray(data, interval):
+
+    dates = np.array(
+        list(data[f"Time Series ({interval})"].keys())[1:], dtype="datetime64[D]"
+    )
+
+    data_x = np.array(list(data[f"Time Series ({interval})"].values())[1:])
+
+    attrs = data["Meta Data"]
+
+    # Create a structured array
+    dtype = [
+        ("open", "f4"),
+        ("high", "f4"),
+        ("low", "f4"),
+        ("close", "f4"),
+        ("volume", "i8"),
+    ]
+
+    structured_data = np.array([tuple(d.values()) for d in data_x], dtype=dtype)
+
+    # Convert to a pandas DataFrame for easy conversion to xarray
+    df = pd.DataFrame(structured_data, index=pd.to_datetime(dates))
+
+    # Convert the pandas DataFrame to an xarray Dataset
+    ds = xr.Dataset.from_dataframe(df)
+    # Add the attributes
+    ds.attrs = attrs
+
+    return ds

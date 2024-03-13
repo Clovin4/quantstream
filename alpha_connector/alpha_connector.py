@@ -1,15 +1,23 @@
 import logging
 import os
+from pathlib import Path
 
 import dotenv
 import numpy as np
 import pandas as pd
 import requests
 import xarray as xr
+import yaml
+from alpha_xarray import json_to_xarray, verify_json
 
 dotenv.load_dotenv()
 
 API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
+
+# Load the config file
+config_path = Path(__file__).parent / "config.yaml"
+with open(config_path) as f:
+    config = yaml.safe_load(f)
 
 # log to txt file
 logging.basicConfig(filename="plutus.log", level=logging.DEBUG)
@@ -20,42 +28,69 @@ class AlphaVantage:
         self.api_key = api_key
         self.base_url = "https://www.alphavantage.co/query?"
 
-    def get_intraday(self, function, interval, symbol):
+    def get_intraday(self, interval, symbol):
+        function = config["core"]["intraday"]
         url = f"{self.base_url}function={function}&symbol={symbol}&interval={interval}&apikey={self.api_key}"
         logging.info(f"Requesting data from {url}")
         r = requests.get(url)
         data = r.json()
-        # logging.info(f"Data received: {data}")
 
-        # Convert data to xarray here
-        # This will depend on the structure of the data
-        # xarray_data = xr.DataArray(data)
-        print(interval)
-        dates = np.array(
-            list(data[f"Time Series ({interval})"].keys())[1:], dtype="datetime64[D]"
+        # Verify the data
+        verify_json(data)
+
+        # Convert data to xarray
+        ds = json_to_xarray(data, interval)
+
+        return ds
+
+    def get_daily(self, symbol):
+        function = config["core"]["daily"]
+        url = (
+            f"{self.base_url}function={function}&symbol={symbol}&apikey={self.api_key}"
         )
+        logging.info(f"Requesting data from {url}")
+        r = requests.get(url)
+        data = r.json()
 
-        data_x = np.array(list(data[f"Time Series ({interval})"].values())[1:])
+        # Verify the data
+        verify_json(data)
 
-        attrs = data["Meta Data"]
+        # Convert data to xarray
+        ds = json_to_xarray(data, "Daily")
 
-        # Create a structured array
-        dtype = [
-            ("open", "f4"),
-            ("high", "f4"),
-            ("low", "f4"),
-            ("close", "f4"),
-            ("volume", "i8"),
-        ]
-        structured_data = np.array([tuple(d.values()) for d in data_x], dtype=dtype)
+        return ds
 
-        # Convert to a pandas DataFrame for easy conversion to xarray
-        df = pd.DataFrame(structured_data, index=pd.to_datetime(dates))
+    def get_weekly(self, symbol):
+        function = config["core"]["weekly"]
+        url = (
+            f"{self.base_url}function={function}&symbol={symbol}&apikey={self.api_key}"
+        )
+        logging.info(f"Requesting data from {url}")
+        r = requests.get(url)
+        data = r.json()
 
-        # Convert the pandas DataFrame to an xarray Dataset
-        ds = xr.Dataset.from_dataframe(df)
-        # Add the attributes
-        ds.attrs = attrs
+        # Verify the data
+        verify_json(data)
+
+        # Convert data to xarray
+        ds = json_to_xarray(data, "Weekly")
+
+        return ds
+
+    def get_monthly(self, symbol):
+        function = config["core"]["monthly"]
+        url = (
+            f"{self.base_url}function={function}&symbol={symbol}&apikey={self.api_key}"
+        )
+        logging.info(f"Requesting data from {url}")
+        r = requests.get(url)
+        data = r.json()
+
+        # Verify the data
+        verify_json(data)
+
+        # Convert data to xarray
+        ds = json_to_xarray(data, "Monthly")
 
         return ds
 
@@ -65,7 +100,7 @@ if __name__ == "__main__":
     # print("Hello World!")
     av = AlphaVantage(api_key)
     print(av.base_url)
-    data = av.get_intraday("TIME_SERIES_INTRADAY", "5min", "IBM")
+    data = av.get_intraday("1min", "IBM")
 
     attrs = data.attrs
     print(attrs)
