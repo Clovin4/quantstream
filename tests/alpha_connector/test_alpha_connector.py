@@ -11,15 +11,15 @@ from alpha_connector.alpha_connector import AlphaVantage
 
 
 @pytest.mark.parametrize(
-    ("function", "interval", "symbol"),
+    ("interval", "symbol"),
     [
-        ("TIME_SERIES_INTRADAY", "5min", "IBM"),
-        ("TIME_SERIES_INTRADAY", "1min", "AAPL"),
-        ("TIME_SERIES_INTRADAY", "15min", "GOOGL"),
+        ("5min", "IBM"),
+        ("1min", "AAPL"),
+        ("15min", "GOOGL"),
     ],
 )
-def test_get_data(function, interval, symbol):
+def test_get_data(interval, symbol):
     """Test get_data method."""
     av = AlphaVantage(API_KEY)
-    data = av.get_intraday(function, interval, symbol)
+    data = av.get_intraday(interval, symbol)
     assert data is not None

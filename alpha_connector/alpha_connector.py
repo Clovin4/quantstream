@@ -8,7 +8,8 @@ import pandas as pd
 import requests
 import xarray as xr
 import yaml
-from alpha_xarray import json_to_xarray, verify_json
+
+from .alpha_xarray import json_to_xarray, verify_json
 
 dotenv.load_dotenv()
 
