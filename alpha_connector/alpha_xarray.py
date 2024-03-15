@@ -19,10 +19,10 @@ def verify_json(data):
 def json_to_xarray(data, interval):
 
     dates = np.array(
-        list(data[f"Time Series ({interval})"].keys())[1:], dtype="datetime64[D]"
+        list(data[f"Time Series ({interval})"].keys())[:], dtype="datetime64[s]"
     )
 
-    data_x = np.array(list(data[f"Time Series ({interval})"].values())[1:])
+    data_x = np.array(list(data[f"Time Series ({interval})"].values())[:])
 
     attrs = data["Meta Data"]
 

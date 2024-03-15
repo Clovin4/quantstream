@@ -3,6 +3,8 @@ import os
 import dotenv
 import pytest
 
+from alpha_connector.alpha_xarray import verify_json
+
 dotenv.load_dotenv()
 
 API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
@@ -10,16 +12,120 @@ API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
 from alpha_connector.alpha_connector import AlphaVantage
 
 
-@pytest.mark.parametrize(
-    ("interval", "symbol"),
-    [
-        ("5min", "IBM"),
-        ("1min", "AAPL"),
-        ("15min", "GOOGL"),
-    ],
-)
-def test_get_data(interval, symbol):
-    """Test get_data method."""
-    av = AlphaVantage(API_KEY)
+@pytest.fixture
+def av():
+    return AlphaVantage(API_KEY)
+
+
+def test_verify_json():
+    """Test the verify_json function."""
+    data = {
+        "Error Message": "Invalid API call. Please retry or visit the documentation (https://www.alphavantage.co/documentation/) for TIME_SERIES_INTRADAY."
+    }
+    with pytest.raises(ValueError):
+        verify_json(data)
+
+    data = {"Information": "Please consider optimizing your API call frequency."}
+    with pytest.raises(ValueError):
+        verify_json(data)
+
+    data = {
+        "Note": "Thank you for using Alpha Vantage! Our standard API call frequency is 5 calls per minute and 500 calls per day. Please visit https://www.alphavantage.co/premium/ if you would like to target a higher API call frequency."
+    }
+    with pytest.raises(ValueError):
+        verify_json(data)
+
+    data = {
+        "Meta Data": {
+            "1. Information": "Intraday (5min) open, high, low, close prices and volume",
+            "2. Symbol": "AAPL",
+            "3. Last Refreshed": "2021-08-27 20:00:00",
+            "4. Interval": "5min",
+            "5. Output Size": "Compact",
+            "6. Time Zone": "US/Eastern",
+        },
+        "Time Series (5min)": {
+            "2021-08-27 20:00:00": {
+                "1. open": "148.3000",
+                "2. high": "148.3000",
+                "3. low": "148.3000",
+                "4. close": "148.3000",
+                "5. volume": "100",
+            }
+        },
+    }
+    assert verify_json(data)
+
+
+def test_init(av):
+    """Test the __init__ method."""
+    assert av.api_key == API_KEY
+    assert av.base_url == "https://www.alphavantage.co/query?"
+
+
+params = [
+    ("5min", "AAPL"),
+    ("15min", "AAPL"),
+    ("30min", "AAPL"),
+    ("60min", "AAPL"),
+]
+
+
+@pytest.mark.parametrize("interval, symbol", params)
+def test_get_intraday(av, interval, symbol):
+    """Test the get_intraday method."""
     data = av.get_intraday(interval, symbol)
-    assert data is not None
+    assert (
+        data.attrs["1. Information"]
+        == "Intraday (5min) open, high, low, close prices and volume"
+    )
+    assert data.attrs["2. Symbol"] == symbol
+    assert data.attrs["3. Last Refreshed"] is not None
+    assert data.attrs["4. Interval"] == interval
+    assert data.attrs["5. Output Size"] == "Compact"
+    assert data.attrs["6. Time Zone"] == "US/Eastern"
+
+
+@pytest.mark.parametrize("interval, symbol", params)
+def test_get_daily(av, interval, symbol):
+    """Test the get_daily method."""
+    data = av.get_daily(symbol)
+    assert (
+        data.attrs["1. Information"]
+        == "Intraday (5min) open, high, low, close prices and volume"
+    )
+    assert data.attrs["2. Symbol"] == symbol
+    assert data.attrs["3. Last Refreshed"] is not None
+    assert data.attrs["4. Interval"] == interval
+    assert data.attrs["5. Output Size"] == "Compact"
+    assert data.attrs["6. Time Zone"] == "US/Eastern"
+
+
+@pytest.mark.parametrize("interval, symbol", params)
+def test_get_weekly(av, interval, symbol):
+    """Test the get_weekly method."""
+    data = av.get_weekly(symbol)
+    assert (
+        data.attrs["1. Information"]
+        == "Intraday (5min) open, high, low, close prices and volume"
+    )
+    assert data.attrs["2. Symbol"] == symbol
+    assert data.attrs["3. Last Refreshed"] is not None
+    assert data.attrs["4. Interval"] == interval
+    assert data.attrs["5. Output Size"] == "Compact"
+    assert data.attrs["6. Time Zone"] == "US/Eastern"
+
+
+@pytest.mark.parametrize("interval, symbol", params)
+def test_get_monthly(av, interval, symbol):
+    """Test the get_monthly method."""
+    data = av.get_monthly(symbol)
+    assert (
+        data.attrs["1. Information"]
+        == "Intraday (5min) open, high, low, close prices and volume"
+    )
+    assert data.attrs["2. Symbol"] == symbol
+    assert data.attrs["3. Last Refreshed"] is not None
+    assert data.attrs["4. Interval"] == interval
+    assert data.attrs["5. Output Size"] == "Compact"
+    assert data.attrs["6. Time Zone"] == "US/Eastern"
