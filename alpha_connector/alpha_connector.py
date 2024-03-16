@@ -63,11 +63,14 @@ class AlphaVantage:
         logging.info("Requesting data for symbol: %s, interval: %s", symbol, interval)
 
         try:
-            response = requests.get(self.base_url, params=params)
-            response.raise_for_status()  # Raises an HTTPError for bad responses (4xx or 5xx)
-
+            url = f"{self.base_url}function={function}&symbol={symbol}&interval={interval}&apikey={self.api_key}&outputsize={outputsize}&datatype={datatype}"
+            response = requests.get(url)
+            response.raise_for_status()
             data = response.json()
-
+            # handle response is API limit reached
+            if "Information" in data.keys():
+                logging.warning(f"API limit reached: {data['Information']}")
+                return data.get("Information")
             # Verify the data. Assuming verify_json throws an exception on failure
             verify_json(data)
 
