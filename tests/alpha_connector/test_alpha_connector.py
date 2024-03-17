@@ -7,7 +7,8 @@ import pytest
 from alpha_connector.alpha_connector import AlphaVantage
 from alpha_connector.alpha_xarray import verify_json
 
-API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
+dotenv.load_dotenv()
+API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
 
 logging.basicConfig(filename="connector.log", level=logging.DEBUG)
 
