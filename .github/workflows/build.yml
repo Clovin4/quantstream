@@ -33,14 +33,11 @@ jobs:
       run: |
         make check-codestyle
 
-    - name: Set API Key Environment Variable
+    - name: Run tests
       env:
         MY_SECRET_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
       run: |
         echo "API Key is set"
-
-    - name: Run tests
-      run: |
         make test
 
     # - name: Run safety checks
