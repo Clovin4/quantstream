@@ -1,3 +1,4 @@
+import logging
 import os
 
 import dotenv
@@ -7,6 +8,8 @@ from alpha_connector.alpha_connector import AlphaVantage
 from alpha_connector.alpha_xarray import verify_json
 
 API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
+
+logging.basicConfig(filename="connector.log", level=logging.DEBUG)
 
 
 @pytest.fixture
