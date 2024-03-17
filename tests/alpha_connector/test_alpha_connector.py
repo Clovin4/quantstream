@@ -3,6 +3,7 @@ import os
 
 import dotenv
 import pytest
+import requests_mock
 
 from alpha_connector.alpha_connector import AlphaVantage
 from alpha_connector.alpha_xarray import verify_json
@@ -74,23 +75,49 @@ params = [
 
 @pytest.mark.parametrize("symbol, interval", params)
 def test_get_intraday(av, symbol, interval):
-    """Test the get_intraday method."""
-    data = av.get_intraday(symbol, interval)
-    if isinstance(data, str):
-        assert (
-            data
-            == "Thank you for using Alpha Vantage! Our standard API rate limit is 25 requests per day. Please subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to instantly remove all daily rate limits."
+    with requests_mock.Mocker() as m:
+        url = f"{av.base_url}function=TIME_SERIES_INTRADAY&symbol={symbol}&interval={interval}&apikey={av.api_key}&outputsize=compact&datatype=json"
+        m.get(
+            url,
+            json={
+                "Meta Data": {
+                    "1. Information": f"Intraday ({interval}) open, high, low, close prices and volume",
+                    "2. Symbol": symbol,
+                    "3. Last Refreshed": "2021-08-27 20:00:00",
+                    "4. Interval": interval,
+                    "5. Output Size": "Compact",
+                    "6. Time Zone": "US/Eastern",
+                },
+                f"Time Series ({interval})": {
+                    "2021-08-27 20:00:00": {
+                        "1. open": "148.3000",
+                        "2. high": "148.3000",
+                        "3. low": "148.3000",
+                        "4. close": "148.3000",
+                        "5. volume": "100",
+                    }
+                },
+            },
         )
-    else:
-        assert (
-            data.attrs["1. Information"]
-            == f"Intraday ({interval}) open, high, low, close prices and volume"
-        )
-        assert data.attrs["2. Symbol"] == symbol
-        assert data.attrs["3. Last Refreshed"] is not None
-        assert data.attrs["4. Interval"] == interval
-        assert data.attrs["5. Output Size"] == "Compact"
-        assert data.attrs["6. Time Zone"] == "US/Eastern"
+        data = av.get_intraday(symbol, interval)
+        if isinstance(data, str):
+            assert (
+                data
+                == "Thank you for using Alpha Vantage! Our standard API rate limit is 25 requests per day. Please subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to instantly remove all daily rate limits."
+            )
+        else:
+            assert (
+                data.attrs["1. Information"]
+                == f"Intraday ({interval}) open, high, low, close prices and volume"
+            )
+            assert data.attrs["2. Symbol"] == symbol
+            assert data.attrs["3. Last Refreshed"] is not None
+            assert data.attrs["4. Interval"] == interval
+            assert data.attrs["5. Output Size"] == "Compact"
+            assert data.attrs["6. Time Zone"] == "US/Eastern"
+
+            assert data["1. open"].values[0] == 148.3
+            assert data["2. high"].values[0] == 148.3
 
 
 """
