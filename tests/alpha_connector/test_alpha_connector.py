@@ -1,15 +1,16 @@
+import logging
 import os
 
 import dotenv
 import pytest
 
+from alpha_connector.alpha_connector import AlphaVantage
 from alpha_connector.alpha_xarray import verify_json
 
 dotenv.load_dotenv()
+API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
 
-API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
-
-from alpha_connector.alpha_connector import AlphaVantage
+logging.basicConfig(filename="connector.log", level=logging.DEBUG)
 
 
 @pytest.fixture
@@ -92,46 +93,9 @@ def test_get_intraday(av, symbol, interval):
         assert data.attrs["6. Time Zone"] == "US/Eastern"
 
 
-# @pytest.mark.parametrize("interval, symbol", params)
-# def test_get_daily(av, interval, symbol):
-#     """Test the get_daily method."""
-#     data = av.get_daily(symbol)
-#     assert (
-#         data.attrs["1. Information"]
-#         == "Intraday (5min) open, high, low, close prices and volume"
-#     )
-#     assert data.attrs["2. Symbol"] == symbol
-#     assert data.attrs["3. Last Refreshed"] is not None
-#     assert data.attrs["4. Interval"] == interval
-#     assert data.attrs["5. Output Size"] == "Compact"
-#     assert data.attrs["6. Time Zone"] == "US/Eastern"
-
-
-# @pytest.mark.parametrize("interval, symbol", params)
-# def test_get_weekly(av, interval, symbol):
-#     """Test the get_weekly method."""
-#     data = av.get_weekly(symbol)
-#     assert (
-#         data.attrs["1. Information"]
-#         == "Intraday (5min) open, high, low, close prices and volume"
-#     )
-#     assert data.attrs["2. Symbol"] == symbol
-#     assert data.attrs["3. Last Refreshed"] is not None
-#     assert data.attrs["4. Interval"] == interval
-#     assert data.attrs["5. Output Size"] == "Compact"
-#     assert data.attrs["6. Time Zone"] == "US/Eastern"
-
-
-# @pytest.mark.parametrize("interval, symbol", params)
-# def test_get_monthly(av, interval, symbol):
-#     """Test the get_monthly method."""
-#     data = av.get_monthly(symbol)
-#     assert (
-#         data.attrs["1. Information"]
-#         == "Intraday (5min) open, high, low, close prices and volume"
-#     )
-#     assert data.attrs["2. Symbol"] == symbol
-#     assert data.attrs["3. Last Refreshed"] is not None
-#     assert data.attrs["4. Interval"] == interval
-#     assert data.attrs["5. Output Size"] == "Compact"
-#     assert data.attrs["6. Time Zone"] == "US/Eastern"
+"""
+TODO: Add tests for the following methods:
+- get_daily
+- get_weekly
+- get_monthly
+"""

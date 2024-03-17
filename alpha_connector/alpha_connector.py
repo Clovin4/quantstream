@@ -11,10 +11,6 @@ import yaml
 
 from .alpha_xarray import json_to_xarray, verify_json
 
-dotenv.load_dotenv()
-
-API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
-
 # Load the config file
 config_path = Path(__file__).parent / "config.yaml"
 with open(config_path) as f:
@@ -27,7 +23,10 @@ logging.basicConfig(filename="connector.log", level=logging.DEBUG)
 class AlphaVantage:
     def __init__(self, api_key: str = None):
         if api_key is None:
+            logging.info("API key not provided. Checking environment variable.")
             api_key = os.getenv("ALPHAVANTAGE_API_KEY")
+            logging.info(f"API key found: {api_key}")
+
         if not api_key or not isinstance(api_key, str):
             raise ValueError(
                 "The AlphaVantage API key must be provided "
