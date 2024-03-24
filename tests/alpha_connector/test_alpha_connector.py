@@ -2,6 +2,7 @@ import logging
 import os
 
 import dotenv
+import numpy as np
 import pytest
 import requests_mock
 
@@ -116,8 +117,8 @@ def test_get_intraday(av, symbol, interval):
             assert data.attrs["5. Output Size"] == "Compact"
             assert data.attrs["6. Time Zone"] == "US/Eastern"
 
-            assert data["1. open"].values[0] == 148.3
-            assert data["2. high"].values[0] == 148.3
+            assert np.isclose(data["open"].values[0], 148.3)
+            assert np.isclose(data["high"].values[0], 148.3)
 
 
 """
