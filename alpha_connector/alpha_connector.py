@@ -141,3 +141,26 @@ class AlphaVantage:
         ds = json_to_xarray(data, "Monthly")
 
         return ds
+
+
+class YFinance:
+    def __init__(self, api_key: str = None):
+        if api_key is None:
+            logging.info("API key not provided. Checking environment variable.")
+            api_key = os.getenv("YFINANCE_API_KEY")
+            logging.info(f"API key found: {api_key}")
+
+        if not api_key or not isinstance(api_key, str):
+            raise ValueError(
+                "The YFinance API key must be provided "
+                "either through the key parameter or "
+                "through the environment variable "
+                "YFINANCE_API_KEY. Get a free key "
+                "from the YFinance website: "
+                "https://www.yfinance.co/support/#api-key"
+            )
+        self.api_key = api_key
+        self.base_url = "https://www.yfinance.co/query?"
+
+    def get_data(self, symbol, start, end):
+        pass
