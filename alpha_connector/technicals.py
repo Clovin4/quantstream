@@ -18,7 +18,7 @@ def __quotes(apikey: str, value: str) -> typing.Optional[list[dict]]:
     """
     path = f"quotes/{value}"
     query_vars = {"apikey": apikey}
-    return __return_json_v3_fmp(path=path, query_vars=query_vars)
+    return __return_json_v3_fmp(path=path, params=query_vars)
 
 
 def quote(
@@ -37,7 +37,7 @@ def quote(
         symbol = ",".join(symbol)
     path = f"quote/{symbol}"
     query_vars = {"apikey": apikey}
-    return __return_json_v3_fmp(path=path, query_vars=query_vars)
+    return __return_json_v3_fmp(path=path, params=query_vars)
 
 
 def historical_chart(
@@ -72,7 +72,7 @@ def historical_chart(
         query_vars["from"] = from_date
     if to_date:
         query_vars["to"] = to_date
-    return __return_json_v3_fmp(path=path, query_vars=query_vars)
+    return __return_json_v3_fmp(path=path, params=query_vars)
 
 
 def historical_price_full(
@@ -104,7 +104,7 @@ def historical_price_full(
     if to_date:
         query_vars["to"] = to_date
 
-    res = __return_json_v3_fmp(path=path, query_vars=query_vars)
+    res = __return_json_v3_fmp(path=path, params=query_vars)
 
     if res:
         return res.get("historicalStockList", res.get("historical", None))

@@ -103,3 +103,6 @@ def __validate_time_delta(value: str) -> str:
         logging.error(
             f"Invalid time_delta value: {value}.  Valid options: {valid_values}"
         )
+        raise ValueError(
+            f"Invalid time_delta value: {value}.  Valid options: {valid_values}"
+        )

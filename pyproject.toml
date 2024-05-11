@@ -42,6 +42,7 @@ numpy = "^1.26.4"
 xarray = "^2024.2.0"
 pypdf = "^4.2.0"
 matplotlib = "^3.8.4"
+polars = "^0.20.25"
 
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.1"
