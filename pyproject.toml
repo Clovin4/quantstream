@@ -148,7 +148,7 @@ source = ["tests"]
 
 
 [tool.coverage.paths]
-source = "alpha_connector"
+source = ["alpha_connector"]
 
 [tool.coverage.report]
 fail_under = 50
