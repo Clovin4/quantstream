@@ -40,6 +40,8 @@ python-dotenv = "^1.0.1"
 pandas = "^2.2.1"
 numpy = "^1.26.4"
 xarray = "^2024.2.0"
+pypdf = "^4.2.0"
+matplotlib = "^3.8.4"
 
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.1"
@@ -62,6 +64,7 @@ click = "^8.1.7"
 
 [tool.poetry.group.dev.dependencies]
 requests-mock = "^1.11.0"
+ipykernel = "^6.29.4"
 
 [tool.black]
 # https://github.com/psf/black
@@ -142,12 +145,10 @@ addopts = [
 [tool.coverage.run]
 source = ["tests"]
 
-[coverage.paths]
+
+[tool.coverage.paths]
 source = "alpha_connector"
 
-[coverage.run]
-branch = true
-
-[coverage.report]
+[tool.coverage.report]
 fail_under = 50
 show_missing = true

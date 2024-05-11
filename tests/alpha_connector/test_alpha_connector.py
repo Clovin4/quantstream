@@ -7,7 +7,7 @@ import pytest
 import requests_mock
 
 from alpha_connector.alpha_connector import AlphaVantage
-from alpha_connector.alpha_xarray import verify_json
+from alpha_connector.data_modeling import verify_json
 
 dotenv.load_dotenv()
 API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
