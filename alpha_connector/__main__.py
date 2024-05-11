@@ -25,6 +25,11 @@ def version_callback(print_version: bool) -> None:
         raise typer.Exit()
 
 
+# TODO: rethink the command structure. Is the best use of this a cli that returns data or a package that returns data?
+# Could the cli be more usefull as a data pipeline tool? A machine learning feature engineering tool? Or a data
+# visualization tool?
+
+
 @app.command(name="")
 def main(
     symbol: str = typer.Option(
@@ -34,9 +39,6 @@ def main(
     interval: str = typer.Option("5min", help="Interval for data."),
     # start_date: str = typer.Option("2021-01-01", help="Start date for analysis."),
     # end_date: str = typer.Option("2021-12-31", help="End date for analysis."),
-    api_key: str = typer.Option(
-        ..., "-k", "--api-key", help="API key for Alpha Vantage."
-    ),
     print_version: bool = typer.Option(
         None,
         "-v",
@@ -46,16 +48,15 @@ def main(
         help="Prints the version of the alpha_connector package.",
     ),
 ) -> None:
-    """Print a greeting with a giving name."""
-
+    alpha_vantage = AlphaVantage()
     if function == "Intraday":
-        data = AlphaVantage(api_key).get_intraday(interval, symbol)
+        data = alpha_vantage.get_intraday(interval, symbol)
     elif function == "Daily":
-        data = AlphaVantage(api_key).get_daily(interval, symbol)
+        data = alpha_vantage.get_daily(interval, symbol)
     elif function == "Weekly":
-        data = AlphaVantage(api_key).get_weekly(interval, symbol)
+        data = alpha_vantage.get_weekly(interval, symbol)
     elif function == "Monthly":
-        data = AlphaVantage(api_key).get_monthly(interval, symbol)
+        data = alpha_vantage.get_monthly(interval, symbol)
     else:
         raise ValueError(f"Function {function} not recognized.")
 
