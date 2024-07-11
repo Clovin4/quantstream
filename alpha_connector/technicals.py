@@ -40,7 +40,7 @@ def quote(
     return __return_json_v3_fmp(path=path, params=query_vars)
 
 
-def historical_chart(
+def intraday(
     apikey: str,
     symbol: str,
     time_delta: str,
@@ -75,7 +75,7 @@ def historical_chart(
     return __return_json_v3_fmp(path=path, params=query_vars)
 
 
-def historical_price_full(
+def daily(
     apikey: str,
     symbol: typing.Union[str, list],
     from_date: str = None,

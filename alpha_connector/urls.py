@@ -25,6 +25,26 @@ class FMP_URLS:
             "1hour",
             "4hour",
         ]
+        self.technical_indicator_time_delta_values = [
+            "1min",
+            "5min",
+            "15min",
+            "30min",
+            "1hour",
+            "4hour",
+            "daily",
+        ]
+        self.statistics_type_values = [
+            "sma",
+            "ema",
+            "wma",
+            "dema",
+            "tema",
+            "williams",
+            "rsi",
+            "adx",
+            "standardDeviation",
+        ]
 
 
 class AlphaVantage_URLS:

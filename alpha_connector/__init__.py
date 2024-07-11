@@ -4,6 +4,9 @@
 import sys
 from importlib import metadata as importlib_metadata
 
+from .alpha_connector import get_timeseries
+from .fmp_connector import FinancialModelingPrep
+
 
 def get_version() -> str:
     try:
@@ -13,3 +16,5 @@ def get_version() -> str:
 
 
 version: str = get_version()
+
+__all__ = ["FinancialModelingPrep", "get_timeseries", "version"]

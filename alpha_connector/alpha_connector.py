@@ -1,56 +1,68 @@
-import logging
-import os
-from pathlib import Path
+"""main module for the alpha_connector package"""
 
-import dotenv
-import numpy as np
-import pandas as pd
-import requests
+from typing import Optional
+
 import xarray as xr
-import yaml
 
-from .data_modeling import json_to_xarray
-from .technicals import historical_chart, historical_price_full, quote
-
-# Load the config file
-config_path = Path(__file__).parent / "av_config.yaml"
-with open(config_path) as f:
-    config = yaml.safe_load(f)
-
-# log to txt file
-logging.basicConfig(filename="connector.log", level=logging.DEBUG)
+from .fmp_connector import FinancialModelingPrep
 
 
-class FinancialModelingPrep:
-    def __init__(self, api_key: str = None):
-        if api_key is None:
-            logging.info("API key not provided. Checking environment variable.")
-            api_key = os.getenv("FMP_API_KEY")
-            logging.info(f"API key found: {api_key}")
+def get_timeseries(
+    symbols: list[str] | str,
+    from_date: str,
+    to_date: str,
+    connector: FinancialModelingPrep,
+    time_delta: Optional[str] = "5min",
+    output_format: Optional[str] = "xarray",
+) -> xr.Dataset:
+    """Get timeseries data for a list of symbols."""
+    if not isinstance(symbols, list):
+        symbols = [symbols]
 
-        if not api_key or not isinstance(api_key, str):
-            raise ValueError(
-                "The FMP API key must be provided "
-                "either through the key parameter or "
-                "through the environment variable "
-                "FMP_API_KEY. Get a free key "
-                "from the financialmodelingprep website: "
-                "https://financialmodelingprep.com/developer/docs/"
+    if output_format not in ["xarray"]:
+        raise ValueError("output_format must be 'xarray' or 'pandas'")
+
+    for symbol in symbols:
+        if not isinstance(symbol, str):
+            raise ValueError("symbols must be a list of strings")
+
+    if output_format == "xarray":
+        dataset = xr.Dataset()
+        for symbol in symbols:
+            temp = connector.get_intraday(symbol, time_delta, from_date, to_date)
+            # extract the data from the xarray dataset
+            open_vals = xr.DataArray(
+                temp["open"].values,
+                dims=["time"],
             )
-        self.api_key = api_key
+            low = xr.DataArray(
+                temp["low"].values,
+                dims=["time"],
+            )
+            high = xr.DataArray(
+                temp["high"].values,
+                dims=["time"],
+            )
+            close = xr.DataArray(
+                temp["close"].values,
+                dims=["time"],
+            )
+            volume = xr.DataArray(
+                temp["volume"].values,
+                dims=["time"],
+            )
 
-    def get_quote(self, symbol):
-        response = quote(self.api_key, symbol)
-        return response
+            # create a new dataset with the extracted data
+            dataset[f"{symbol.lower()}_open"] = open_vals
+            dataset[f"{symbol.lower()}_low"] = low
+            dataset[f"{symbol.lower()}_high"] = high
+            dataset[f"{symbol.lower()}_close"] = close
+            dataset[f"{symbol.lower()}_volume"] = volume
 
-    def get_historical_price(self, symbol, from_date=None, to_date=None):
-        response = historical_price_full(self.api_key, symbol, from_date, to_date)
-        return json_to_xarray(response)
+            dataset.coords["time"] = temp["time"]
 
-    def get_historical_chart(
-        self, symbol, time_delta, from_date, to_date, time_series=None
-    ):
-        response = historical_chart(
-            self.api_key, symbol, time_delta, from_date, to_date, time_series
-        )
-        return response
+        dataset.attrs["time_delta"] = time_delta
+        dataset.attrs["from_date"] = from_date
+        dataset.attrs["to_date"] = to_date
+
+        return dataset

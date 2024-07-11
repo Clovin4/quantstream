@@ -1,6 +1,6 @@
-# type: ignore[attr-defined]
 from typing import Optional
 
+import os
 from enum import Enum
 from random import choice
 
@@ -8,7 +8,7 @@ import typer
 from rich.console import Console
 
 from alpha_connector import version
-from alpha_connector.alpha_connector import AlphaVantage
+from alpha_connector.fmp_connector import FinancialModelingPrep
 
 app = typer.Typer(
     name="alpha_connector",
@@ -25,6 +25,18 @@ def version_callback(print_version: bool) -> None:
         raise typer.Exit()
 
 
+def confirm_api_keys_callback(show_api_keys: bool) -> None:
+    """Print the api keys."""
+    if show_api_keys:
+        console.print(f"[yellow]alpha_connector[/] version: [bold blue]{version}[/]")
+        # look for keys in environment variables
+        fmp_api_key = os.getenv("FMP_API_KEY")
+        console.print(f"[yellow]FMP_API_KEY[/]: [bold blue]{fmp_api_key}[/]")
+        av_api_key = os.getenv("ALPHAVANTAGE_API_KEY")
+        console.print(f"[yellow]ALPHAVANTAGE_API_KEY[/]: [bold blue]{av_api_key}[/]")
+        raise typer.Exit()
+
+
 # TODO: rethink the command structure. Is the best use of this a cli that returns data or a package that returns data?
 # Could the cli be more usefull as a data pipeline tool? A machine learning feature engineering tool? Or a data
 # visualization tool?
@@ -32,13 +44,6 @@ def version_callback(print_version: bool) -> None:
 
 @app.command(name="")
 def main(
-    symbol: str = typer.Option(
-        ..., "-s", "--symbol", help="Ticker for asset analysis."
-    ),
-    function: str = typer.Option("Intraday", help="Interval for data."),
-    interval: str = typer.Option("5min", help="Interval for data."),
-    # start_date: str = typer.Option("2021-01-01", help="Start date for analysis."),
-    # end_date: str = typer.Option("2021-12-31", help="End date for analysis."),
     print_version: bool = typer.Option(
         None,
         "-v",
@@ -47,20 +52,16 @@ def main(
         is_eager=True,
         help="Prints the version of the alpha_connector package.",
     ),
+    show_api_keys: bool = typer.Option(
+        None,
+        "-k",
+        "--keys",
+        callback=confirm_api_keys_callback,
+        is_eager=True,
+        help="Prints the api keys.",
+    ),
 ) -> None:
-    alpha_vantage = AlphaVantage()
-    if function == "Intraday":
-        data = alpha_vantage.get_intraday(interval, symbol)
-    elif function == "Daily":
-        data = alpha_vantage.get_daily(interval, symbol)
-    elif function == "Weekly":
-        data = alpha_vantage.get_weekly(interval, symbol)
-    elif function == "Monthly":
-        data = alpha_vantage.get_monthly(interval, symbol)
-    else:
-        raise ValueError(f"Function {function} not recognized.")
-
-    console.print(data)
+    fmp = FinancialModelingPrep()
 
 
 if __name__ == "__main__":

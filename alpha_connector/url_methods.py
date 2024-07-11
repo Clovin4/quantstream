@@ -106,3 +106,34 @@ def __validate_time_delta(value: str) -> str:
         raise ValueError(
             f"Invalid time_delta value: {value}.  Valid options: {valid_values}"
         )
+
+
+def __validate_statistics_type(value: str) -> str:
+    """
+    Check to see if passed string is in the list of possible Statistics Type.
+    :param value: Statistics Type name.
+    :return: Passed value or No Return
+    """
+    fmp = FMP_URLS()
+    valid_values = fmp.statistics_type_values
+    if value in valid_values:
+        return value
+    else:
+        logging.error(
+            f"Invalid statistics_type value: {value}.  Valid options: {valid_values}"
+        )
+
+
+def __validate_technical_indicators_time_delta(value: str) -> str:
+    """Exactly like set_time_delta() method but adds 'daily' as an option.
+    :param value: Indicators Time Delta name.
+    :return: Passed value or No Return
+    """
+    fmp = FMP_URLS()
+    valid_values = fmp.technical_indicator_time_delta_values
+    if value in valid_values:
+        return value
+    else:
+        logging.error(
+            f"Invalid time_delta value: {value}.  Valid options: {valid_values}"
+        )
