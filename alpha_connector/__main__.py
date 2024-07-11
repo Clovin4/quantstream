@@ -61,7 +61,10 @@ def main(
         help="Prints the api keys.",
     ),
 ) -> None:
-    fmp = FinancialModelingPrep()
+    """Main entry point for the alpha_connector package."""
+    console.print(
+        "Welcome to the alpha_connector package. Use the --help flag to see available commands."
+    )
 
 
 if __name__ == "__main__":

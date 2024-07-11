@@ -6,14 +6,6 @@ import numpy as np
 import pandas as pd
 import xarray as xr
 
-from .technical_indictors import technical_indicators
-from .technicals import daily, intraday, quote
-
-
-def json_to_xarray(data: list[dict]) -> xr.Dataset:
-    """Convert json data to xarray."""
-    return FinDataset.from_json(data)
-
 
 class FinDataset(xr.Dataset):
     __slots__ = ()
@@ -55,15 +47,15 @@ class FinDataset(xr.Dataset):
 
         return cls(data_vars)
 
-    @classmethod
-    def from_dataframe(cls, data: pd.DataFrame) -> "FinDataset":
-        """Create a FinDataset from a pandas DataFrame."""
-        return xr.Dataset.from_dataframe(data)
+    def plot_candlestick(self):
+        """Plot a candlestick chart."""
+        import mplfinance as mpf
 
-    def to_json(self) -> list[dict]:
-        """Convert the FinDataset to a list of dictionaries."""
-        return json.loads(self.to_dataframe().to_json(orient="records"))
-
-    def to_dataframe(self) -> pd.DataFrame:
-        """Convert the FinDataset to a pandas DataFrame."""
-        return self.to_dataframe()
+        mpf.plot(
+            self.to_pandas(),
+            type="candle",
+            style="charles",
+            volume=True,
+            ylabel="Price",
+            ylabel_lower="Shares\nTraded",
+        )

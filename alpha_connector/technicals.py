@@ -6,21 +6,6 @@ from .urls import FMP_URLS
 fmp = FMP_URLS()
 
 
-def __quotes(apikey: str, value: str) -> typing.Optional[list[dict]]:
-    """_summary_
-
-    Args:
-        apikey (str): _description_
-        value (str): _description_
-
-    Returns:
-        typing.Optional[typing.List[typing.Dict]]: _description_
-    """
-    path = f"quotes/{value}"
-    query_vars = {"apikey": apikey}
-    return __return_json_v3_fmp(path=path, params=query_vars)
-
-
 def quote(
     apikey: str, symbol: typing.Union[str, list[str]]
 ) -> typing.Optional[list[dict]]:
