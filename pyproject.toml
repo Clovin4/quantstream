@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "quantstream"
-version = "0.0.0"
+version = "0.0.1"
 description = "'QuantStream' is a Python library for financial data analysis and visualization."
 readme = "README.md"
 license = { file = "LICENSE" }
