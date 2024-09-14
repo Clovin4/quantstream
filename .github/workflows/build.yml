@@ -40,5 +40,5 @@ jobs:
     # Run tests
     - name: Run tests
       env:
-        ALPHAVANTAGE_API_KEY: ${{ secrets.FMP_API_KEY }}
+        FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
       run: uv run pytest tests
