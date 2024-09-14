@@ -16,8 +16,8 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install poetry
-      run: make poetry-download
+    - name: Install uv
+      run: sudo apt-get install -y uv
 
     - name: Set up cache
       uses: actions/cache@v4.0.1
@@ -26,20 +26,11 @@ jobs:
         key: venv-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('poetry.lock') }}
     - name: Install dependencies
       run: |
-        poetry config virtualenvs.in-project true
-        poetry install
-
-    - name: Run style checks
-      run: |
-        make check-codestyle
+        uv pip install -r requirements.txt
 
     - name: Run tests
       env:
         ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
       run: |
         echo "API Key is set"
-        make test
-
-    # - name: Run safety checks
-    #   run: |
-    #     make check-safety
+        pytest tests
