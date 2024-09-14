@@ -7,30 +7,38 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11"]
+        python-version:
+          - '3.11'
+          - '3.10'
+          - '3.9'
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5.0.0
-      with:
-        python-version: ${{ matrix.python-version }}
 
+    # Step to install uv
     - name: Install uv
-      run: sudo apt-get install -y uv
+      uses: astral-sh/setup-uv@v2
 
-    - name: Set up cache
-      uses: actions/cache@v4.0.1
-      with:
-        path: .venv
-        key: venv-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('poetry.lock') }}
+    # Step to set up Python using uv
+    - name: Set up Python ${{ matrix.python-version }}
+      run: uv python install ${{ matrix.python-version }}
+
+    # Step to install project dependencies with uv
     - name: Install dependencies
-      run: |
-        uv pip install -r requirements.txt
+      run: uv sync --all-extras --dev
 
+    # Step to enable caching in uv
+    - name: Enable caching
+      uses: astral-sh/setup-uv@v2
+      with:
+        enable-cache: true
+
+    # Run ruff for style checks
+    - name: Run ruff for style checks
+      run: uv run ruff check .
+
+    # Run tests
     - name: Run tests
       env:
         ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
-      run: |
-        echo "API Key is set"
-        pytest tests
+      run: uv run pytest tests
