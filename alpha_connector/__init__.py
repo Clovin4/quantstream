@@ -1,11 +1,10 @@
 # type: ignore[attr-defined]
 """Awesome `alpha_connector` is a Python cli/package created with https://github.com/TezRomacH/python-package-template"""
 
-import sys
 from importlib import metadata as importlib_metadata
 
-from .alpha_connector import get_timeseries
-from .fmp_connector import FinancialModelingPrep
+from .connectors.fmp_connector import FinancialModelingPrep
+from .core.portfolio import Portfolio
 
 
 def get_version() -> str:
@@ -17,4 +16,4 @@ def get_version() -> str:
 
 version: str = get_version()
 
-__all__ = ["FinancialModelingPrep", "get_timeseries", "version"]
+__all__ = ["FinancialModelingPrep", "Portfolio", "version"]

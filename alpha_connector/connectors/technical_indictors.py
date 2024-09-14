@@ -2,10 +2,8 @@ import typing
 
 from .url_methods import (
     __return_json_v3_fmp,
-    __return_json_v4_fmp,
     __validate_statistics_type,
     __validate_technical_indicators_time_delta,
-    __validate_time_delta,
 )
 
 
