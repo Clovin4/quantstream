@@ -1,7 +1,7 @@
 import typing
 
 from .url_methods import (
-    __return_json_v3_fmp,
+    __return_json_v3,
     __validate_statistics_type,
     __validate_technical_indicators_time_delta,
 )
@@ -30,4 +30,4 @@ def technical_indicators(
         "period": period,
         "type": __validate_statistics_type(statistics_type),
     }
-    return __return_json_v3_fmp(path=path, query_vars=query_vars)
+    return __return_json_v3(path=path, query_vars=query_vars)

@@ -1,20 +1,17 @@
 import os
 
-import dotenv
 import pytest
 import xarray as xr
 
 from quantstream.connectors.data_modeling import FinDataset
 from quantstream.connectors.fmp_connector import FinancialModelingPrep
 
-# dotenv.load_dotenv()
 FMP_API_KEY = os.getenv("FMP_API_KEY")
 
 
 @pytest.fixture
 def fmp():
     # at some point we'll need to use a secrets manager
-    dotenv.load_dotenv()
     return FinancialModelingPrep(api_key=FMP_API_KEY)
 
 

@@ -1,6 +1,6 @@
 import typing
 
-from .url_methods import __return_json_v3_fmp, __validate_time_delta
+from .url_methods import __return_json_v3, __validate_time_delta
 from .urls import FMP_URLS
 
 fmp = FMP_URLS()
@@ -22,7 +22,7 @@ def quote(
         symbol = ",".join(symbol)
     path = f"quote/{symbol}"
     query_vars = {"apikey": apikey}
-    return __return_json_v3_fmp(path=path, params=query_vars)
+    return __return_json_v3(path=path, params=query_vars)
 
 
 def intraday(
@@ -57,7 +57,7 @@ def intraday(
         query_vars["from"] = from_date
     if to_date:
         query_vars["to"] = to_date
-    return __return_json_v3_fmp(path=path, params=query_vars)
+    return __return_json_v3(path=path, params=query_vars)
 
 
 def daily(
@@ -89,7 +89,7 @@ def daily(
     if to_date:
         query_vars["to"] = to_date
 
-    res = __return_json_v3_fmp(path=path, params=query_vars)
+    res = __return_json_v3(path=path, params=query_vars)
 
     if res:
         return res.get("historicalStockList", res.get("historical", None))

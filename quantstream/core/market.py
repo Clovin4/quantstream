@@ -7,5 +7,3 @@ class Market:
     def __init__(self):
         self.data = {}
         self.api_key = os.getenv
-
-    raise NotImplementedError

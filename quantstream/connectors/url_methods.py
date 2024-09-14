@@ -6,6 +6,12 @@ import requests
 
 from .urls import FMP_URLS
 
+from .settings import (
+    INDUSTRY_VALUES,
+    PERIOD_VALUES,
+    SECTOR_VALUES,
+)
+
 CONNECT_TIMEOUT = 10
 READ_TIMEOUT = 10
 
@@ -13,7 +19,7 @@ logging.getLogger("requests").setLevel(logging.WARNING)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
-def __return_json_v3_fmp(path: str, params: dict[str, str]) -> typing.Optional[list]:
+def __return_json_v3(path: str, params: dict[str, str]) -> typing.Optional[list]:
     """Return json from the FMP API."""
     fmp = FMP_URLS()
     url = f"{fmp.base_url_v3}{path}"
@@ -51,7 +57,7 @@ def __return_json_v3_fmp(path: str, params: dict[str, str]) -> typing.Optional[l
     return return_var
 
 
-def __return_json_v4_fmp(path: str, params: dict[str, str]) -> typing.Optional[list]:
+def __return_json_v4(path: str, params: dict[str, str]) -> typing.Optional[list]:
     """Return json from the FMP API."""
     fmp = FMP_URLS()
     url = f"{fmp.base_url_v4}{path}"
@@ -136,4 +142,45 @@ def __validate_technical_indicators_time_delta(value: str) -> str:
     else:
         logging.error(
             f"Invalid time_delta value: {value}.  Valid options: {valid_values}"
+        )
+
+
+def __validate_period(value: str) -> str:
+    """
+    Check to see if passed string is in the list of possible time periods.
+    :param value: Period name.
+    :return: Passed value or No Return
+    """
+    valid_values = PERIOD_VALUES
+    if value in valid_values:
+        return value
+    else:
+        logging.error(f"Invalid period value: {value}.  Valid options: {valid_values}")
+
+
+def __validate_sector(value: str) -> str:
+    """
+    Check to see if passed string is in the list of possible Sectors.
+    :param value: Sector name.
+    :return: Passed value or No Return
+    """
+    valid_values = SECTOR_VALUES
+    if value in valid_values:
+        return value
+    else:
+        logging.error(f"Invalid sector value: {value}.  Valid options: {valid_values}")
+
+
+def __validate_industry(value: str) -> str:
+    """
+    Check to see if passed string is in the list of possible Industries.
+    :param value: Industry name.
+    :return: Passed value or No Return
+    """
+    valid_values = INDUSTRY_VALUES
+    if value in valid_values:
+        return value
+    else:
+        logging.error(
+            f"Invalid industry value: {value}.  Valid options: {valid_values}"
         )
