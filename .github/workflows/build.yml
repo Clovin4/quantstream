@@ -7,39 +7,38 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11"]
+        python-version:
+          - '3.11'
+          - '3.10'
+          - '3.9'
 
     steps:
     - uses: actions/checkout@v4
+
+    # Step to install uv
+    - name: Install uv
+      uses: astral-sh/setup-uv@v2
+
+    # Step to set up Python using uv
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5.0.0
-      with:
-        python-version: ${{ matrix.python-version }}
+      run: uv python install ${{ matrix.python-version }}
 
-    - name: Install poetry
-      run: make poetry-download
-
-    - name: Set up cache
-      uses: actions/cache@v4.0.1
-      with:
-        path: .venv
-        key: venv-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('poetry.lock') }}
+    # Step to install project dependencies with uv
     - name: Install dependencies
-      run: |
-        poetry config virtualenvs.in-project true
-        poetry install
+      run: uv sync --all-extras --dev
 
-    - name: Run style checks
-      run: |
-        make check-codestyle
+    # Step to enable caching in uv
+    - name: Enable caching
+      uses: astral-sh/setup-uv@v2
+      with:
+        enable-cache: true
 
+    # Run ruff for style checks
+    - name: Run ruff for style checks
+      run: uv run ruff check .
+
+    # Run tests
     - name: Run tests
       env:
-        ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
-      run: |
-        echo "API Key is set"
-        make test
-
-    # - name: Run safety checks
-    #   run: |
-    #     make check-safety
+        FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+      run: uv run pytest tests

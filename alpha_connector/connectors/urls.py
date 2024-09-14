@@ -1,7 +1,5 @@
 """Url patterns for the alpha_connector app. Base classes for AlphaVantage API and FMP API."""
 
-import typing
-
 
 class FMP_URLS:
     """Base class for FMP API."""
@@ -45,9 +43,3 @@ class FMP_URLS:
             "adx",
             "standardDeviation",
         ]
-
-
-class AlphaVantage_URLS:
-    """Base class for AlphaVantage API."""
-
-    pass

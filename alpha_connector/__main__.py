@@ -1,18 +1,13 @@
-from typing import Optional
-
 import os
-from enum import Enum
-from random import choice
 
 import typer
 from rich.console import Console
 
 from alpha_connector import version
-from alpha_connector.fmp_connector import FinancialModelingPrep
 
 app = typer.Typer(
-    name="alpha_connector",
-    help="Awesome `alpha_connector` is a Python cli/package created with https://github.com/TezRomacH/python-package-template",
+    name="quantstream",
+    help="Awesome `quantstream` is a Python package for financial data analysis.",
     add_completion=False,
 )
 console = Console()
@@ -21,14 +16,14 @@ console = Console()
 def version_callback(print_version: bool) -> None:
     """Print the version of the package."""
     if print_version:
-        console.print(f"[yellow]alpha_connector[/] version: [bold blue]{version}[/]")
+        console.print(f"[yellow]quantstream[/] version: [bold blue]{version}[/]")
         raise typer.Exit()
 
 
 def confirm_api_keys_callback(show_api_keys: bool) -> None:
     """Print the api keys."""
     if show_api_keys:
-        console.print(f"[yellow]alpha_connector[/] version: [bold blue]{version}[/]")
+        console.print(f"[yellow]quantstream[/] version: [bold blue]{version}[/]")
         # look for keys in environment variables
         fmp_api_key = os.getenv("FMP_API_KEY")
         console.print(f"[yellow]FMP_API_KEY[/]: [bold blue]{fmp_api_key}[/]")
@@ -38,8 +33,7 @@ def confirm_api_keys_callback(show_api_keys: bool) -> None:
 
 
 # TODO: rethink the command structure. Is the best use of this a cli that returns data or a package that returns data?
-# Could the cli be more usefull as a data pipeline tool? A machine learning feature engineering tool? Or a data
-# visualization tool?
+# Could the cli be more usefull as a data pipeline tool? A feature engineering tool for machine learning?
 
 
 @app.command(name="")
@@ -50,7 +44,7 @@ def main(
         "--version",
         callback=version_callback,
         is_eager=True,
-        help="Prints the version of the alpha_connector package.",
+        help="Prints the version of the quantstream package.",
     ),
     show_api_keys: bool = typer.Option(
         None,
@@ -61,7 +55,10 @@ def main(
         help="Prints the api keys.",
     ),
 ) -> None:
-    fmp = FinancialModelingPrep()
+    """Main entry point for the quantstream package."""
+    console.print(
+        "Welcome to the quantstream package. Use the --help flag to see available commands."
+    )
 
 
 if __name__ == "__main__":
