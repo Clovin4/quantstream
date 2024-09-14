@@ -1,47 +1,77 @@
-# How to contribute
 
-## Dependencies
+# Contributing to QuantStream
 
-We use `poetry` to manage the [dependencies](https://github.com/python-poetry/poetry).
-If you dont have `poetry`, you should install with `make poetry-download`.
+Thank you for your interest in contributing to QuantStream! We welcome contributions from the community. This document outlines the process for contributing to the project.
 
-To install dependencies and prepare [`pre-commit`](https://pre-commit.com/) hooks you would need to run `install` command:
+## How to Contribute
+
+1. **Fork the Repository**: Start by forking the repository to your GitHub account.
+
+2. **Create a Branch**: Create a new branch in your forked repository for your changes. Use a meaningful name, such as `feature/add-new-model` or `fix/bug-description`.
+
+    ```bash
+    git checkout -b feature/add-new-model
+    ```
+
+3. **Make Your Changes**: Develop your feature or fix. Ensure your code adheres to the project’s coding standards (see Code Style and Linting).
+
+4. **Run Tests**: Run all tests to make sure your changes do not break any existing functionality.
+
+    ```bash
+    uv run pytest tests/
+    ```
+
+5. **Run Code Linting**: Make sure your code passes the linting checks. We use `ruff` for linting:
+
+    ```bash
+    uv run ruff check .
+    ```
+
+6. **Commit Your Changes**: Commit your changes with a meaningful commit message. Please follow conventional commit guidelines (e.g., `feat: add new data model`, `fix: resolve API key issue`).
+
+    ```bash
+    git add .
+    git commit -m "feat: add new financial model for stock analysis"
+    ```
+
+7. **Push Your Branch**: Push the branch to your forked repository:
+
+    ```bash
+    git push origin feature/add-new-model
+    ```
+
+8. **Open a Pull Request**: Open a pull request (PR) from your forked repository to the main QuantStream repository. Please provide a detailed description of the changes in your PR and reference any related issues.
+
+9. **Review Process**: Your pull request will be reviewed by project maintainers. Please be open to feedback and make any necessary changes.
+
+## Code Style and Linting
+
+QuantStream follows standard Python coding conventions and uses `ruff` for code linting. Please ensure that your code adheres to the following style guidelines:
+
+- **Code Linting**: Run `ruff` to check code style:
+  
+  ```bash
+  uv run ruff check .
+  ```
+
+- **Code Formatting**: Use `black` to format the code before submitting a pull request.
+
+  ```bash
+  uv run black .
+  ```
+
+## Running Tests
+
+We use `pytest` for testing. Ensure all tests pass before submitting your contribution:
 
 ```bash
-make install
-make pre-commit-install
+uv run pytest tests/
 ```
 
-To activate your `virtualenv` run `poetry shell`.
+You can also add new tests for any features you contribute.
 
-## Codestyle
+## License
 
-After installation you may execute code formatting.
+By contributing to QuantStream, you agree that your contributions will be licensed under the MIT License.
 
-```bash
-make codestyle
-```
-
-### Checks
-
-Many checks are configured for this project. Command `make check-codestyle` will check black, isort and darglint.
-The `make check-safety` command will look at the security of your code.
-
-Comand `make lint` applies all checks.
-
-### Before submitting
-
-Before submitting your code please do the following steps:
-
-1. Add any changes you want
-1. Add tests for the new changes
-1. Edit documentation if you have changed something significant
-1. Run `make codestyle` to format your changes.
-1. Run `make lint` to ensure that types, security and docstrings are okay.
-
-## Other help
-
-You can contribute by spreading a word about this library.
-It would also be a huge contribution to write
-a short article on how you are using this project.
-You can also share your best practices with us.
+Thank you for your contribution!

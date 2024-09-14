@@ -1,71 +1,72 @@
-# Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
 [build-system]
-requires = ["poetry_core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.poetry]
-name = "alpha_connector"
-version = "0.1.1"
-description = "Awesome `alpha_connector` is a Python cli/package created with https://github.com/TezRomacH/python-package-template"
+[project]
+name = "quantstream"
+version = "0.0.2"
+description = "'QuantStream' is a Python library for financial data analysis and visualization."
 readme = "README.md"
-authors = ["Clovin4 <christian70401@gmail.com>"]
-license = "MIT"
-repository = "https://github.com/AlphaConnector/alpha_connector"
-homepage = "https://github.com/AlphaConnector/alpha_connector"
-
-# Keywords description https://python-poetry.org/docs/pyproject/#keywords
-keywords = []  #! Update me
-
-# Pypi classifiers: https://pypi.org/classifiers/
-classifiers = [  #! Update me
-  "Development Status :: 3 - Alpha",
-  "Intended Audience :: Developers",
-  "Operating System :: OS Independent",
-  "Topic :: Software Development :: Libraries :: Python Modules",
-  "License :: OSI Approved :: MIT License",
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.9",
+license = { file = "LICENSE" }
+authors = [{ name = "quantstream" }]
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "typer[all]>=0.9.0",
+    "rich>=13.7.1",
+    "python-dotenv>=1.0.1",
+    "pandas>=2.2.1",
+    "numpy>=1.26.4",
+    "xarray>=2024.2.0",
+    "pypdf>=4.2.0",
+    "matplotlib>=3.8.4",
+    "polars>=0.20.25",
+    "plotly>=5.22.0",
+    "nbformat>=5.10.4",
+    "pytest>=8.2.2",
+    "requests>=2.26.0",
+    "pyyaml>=6.0",
+    "mplfinance>=0.12.10b0",
 ]
 
-[tool.poetry.scripts]
-# Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
-"alpha_connector" = "alpha_connector.__main__:app"
+[project.optional-dependencies]
+dev = [
+    "bandit>=1.7.1",
+    "black>=24.3.0",
+    "darglint>=1.8.1",
+    "isort[colors]>=5.10.1",
+    "mypy>=1.0",
+    "mypy-extensions>=1.0.0",
+    "pre-commit>=3.6.2",
+    "pydocstyle>=6.1.1",
+    "pylint>=3.1.0",
+    "pytest>=8.1.1",
+    "pyupgrade>=3.15.1",
+    "coverage>=7.4.4",
+    "coverage-badge>=1.1.0",
+    "pytest-html>=4.1.1",
+    "pytest-cov>=4.1.0",
+    "click>=8.1.7",
+    "requests-mock>=1.11.0",
+    "ipykernel>=6.29.4",
+    "ruff>=0.0.276",
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-
-typer = {extras = ["all"], version = "^0.9.0"}
-rich = "^13.7.1"
-python-dotenv = "^1.0.1"
-pandas = "^2.2.1"
-numpy = "^1.26.4"
-xarray = "^2024.2.0"
-
-[tool.poetry.dev-dependencies]
-bandit = "^1.7.1"
-black = {version = "^24.3.0", allow-prereleases = true}
-darglint = "^1.8.1"
-isort = {extras = ["colors"], version = "^5.10.1"}
-mypy = "^1.9"
-mypy-extensions = "^1.0.0"
-pre-commit = "^3.6.2"
-pydocstyle = "^6.1.1"
-pylint = "^3.1.0"
-pytest = "^8.1.1"
-pyupgrade = "^3.15.1"
-safety = "^3.0.1"
-coverage = "^7.4.4"
-coverage-badge = "^1.1.0"
-pytest-html = "^4.1.1"
-pytest-cov = "^4.1.0"
-click = "^8.1.7"
+[project.scripts]
+quantstream = "quantstream.__main__:app"
 
 [tool.black]
-# https://github.com/psf/black
-target-version = ["py39"]
+target-version = ["py311"]
 line-length = 88
 color = true
-
 exclude = '''
 /(
     \.git
@@ -83,10 +84,8 @@ exclude = '''
 '''
 
 [tool.isort]
-# https://github.com/timothycrosley/isort/
-py_version = 39
+py_version = 311
 line_length = 88
-
 known_typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions"]
 sections = ["FUTURE", "TYPING", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
 include_trailing_comma = true
@@ -96,12 +95,10 @@ indent = 4
 color_output = true
 
 [tool.mypy]
-# https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file
 python_version = "3.11"
 pretty = true
 show_traceback = true
 color_output = true
-
 allow_redefinition = false
 check_untyped_defs = true
 disallow_any_generics = true
@@ -121,30 +118,22 @@ warn_unreachable = true
 warn_unused_configs = true
 warn_unused_ignores = true
 
-
 [tool.pytest.ini_options]
-# https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
-# Directories that are not visited by pytest collector:
-norecursedirs =["hooks", "*.egg", ".eggs", "dist", "build", "docs", ".tox", ".git", "__pycache__"]
+norecursedirs = ["hooks", "*.egg", ".eggs", "dist", "build", "docs", ".tox", ".git", "__pycache__"]
 doctest_optionflags = ["NUMBER", "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL"]
-
-# Extra options:
 addopts = [
-  "--strict-markers",
-  "--tb=short",
-  "--doctest-modules",
-  "--doctest-continue-on-failure",
+    "--strict-markers",
+    "--tb=short",
+    "--doctest-modules",
+    "--doctest-continue-on-failure",
 ]
 
 [tool.coverage.run]
 source = ["tests"]
 
-[coverage.paths]
-source = "alpha_connector"
+[tool.coverage.paths]
+source = ["quantstream"]
 
-[coverage.run]
-branch = true
-
-[coverage.report]
+[tool.coverage.report]
 fail_under = 50
 show_missing = true
