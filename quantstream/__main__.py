@@ -3,11 +3,11 @@ import os
 import typer
 from rich.console import Console
 
-from alpha_connector import version
+from quantstream import version
 
 app = typer.Typer(
     name="quantstream",
-    help="Awesome `quantstream` is a Python package for financial data analysis.",
+    help="`quantstream` is a Python package for financial data analysis.",
     add_completion=False,
 )
 console = Console()
@@ -27,8 +27,6 @@ def confirm_api_keys_callback(show_api_keys: bool) -> None:
         # look for keys in environment variables
         fmp_api_key = os.getenv("FMP_API_KEY")
         console.print(f"[yellow]FMP_API_KEY[/]: [bold blue]{fmp_api_key}[/]")
-        av_api_key = os.getenv("ALPHAVANTAGE_API_KEY")
-        console.print(f"[yellow]ALPHAVANTAGE_API_KEY[/]: [bold blue]{av_api_key}[/]")
         raise typer.Exit()
 
 

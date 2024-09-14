@@ -13,7 +13,7 @@ logging.getLogger("requests").setLevel(logging.WARNING)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
-def __return_json_v3_fmp(path: str, params: dict[str, str]) -> typing.Optional[list]:
+def _return_json_v3_fmp(path: str, params: dict[str, str]) -> typing.Optional[list]:
     """Return json from the FMP API."""
     fmp = FMP_URLS()
     url = f"{fmp.base_url_v3}{path}"
@@ -51,7 +51,7 @@ def __return_json_v3_fmp(path: str, params: dict[str, str]) -> typing.Optional[l
     return return_var
 
 
-def __return_json_v4_fmp(path: str, params: dict[str, str]) -> typing.Optional[list]:
+def _return_json_v4_fmp(path: str, params: dict[str, str]) -> typing.Optional[list]:
     """Return json from the FMP API."""
     fmp = FMP_URLS()
     url = f"{fmp.base_url_v4}{path}"
@@ -89,7 +89,7 @@ def __return_json_v4_fmp(path: str, params: dict[str, str]) -> typing.Optional[l
     return return_var
 
 
-def __validate_time_delta(value: str) -> str:
+def _validate_time_delta(value: str) -> str:
     """
     Check to see if passed string is in the list of possible Time Deltas.
     :param value: Time Delta name.
@@ -124,7 +124,7 @@ def __validate_statistics_type(value: str) -> str:
         )
 
 
-def __validate_technical_indicators_time_delta(value: str) -> str:
+def _validate_technical_indicators_time_delta(value: str) -> str:
     """Exactly like set_time_delta() method but adds 'daily' as an option.
     :param value: Indicators Time Delta name.
     :return: Passed value or No Return

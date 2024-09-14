@@ -3,12 +3,12 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "alpha_connector"
+name = "quantstream"
 version = "0.1.1"
-description = "Awesome `alpha_connector` is a Python cli/package created with https://github.com/TezRomacH/python-package-template"
+description = "Awesome `quantstream` is a Python cli/package created with https://github.com/TezRomacH/python-package-template"
 readme = "README.md"
 license = { file = "LICENSE" }
-authors = [{ name = "alpha_connector" }]
+authors = [{ name = "quantstream" }]
 requires-python = ">=3.11"
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -60,7 +60,7 @@ dev = [
 ]
 
 [project.scripts]
-alpha_connector = "alpha_connector.__main__:app"
+quantstream = "quantstream.__main__:app"
 
 [tool.black]
 target-version = ["py311"]
@@ -131,7 +131,7 @@ addopts = [
 source = ["tests"]
 
 [tool.coverage.paths]
-source = ["alpha_connector"]
+source = ["quantstream"]
 
 [tool.coverage.report]
 fail_under = 50

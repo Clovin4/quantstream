@@ -1,4 +1,4 @@
-"""Url patterns for the alpha_connector app. Base classes for AlphaVantage API and FMP API."""
+"""Url patterns for the FMP API."""
 
 
 class FMP_URLS:

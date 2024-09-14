@@ -4,10 +4,10 @@ import dotenv
 import pytest
 import xarray as xr
 
-from alpha_connector.connectors.data_modeling import FinDataset
-from alpha_connector.connectors.fmp_connector import FinancialModelingPrep
+from quantstream.connectors.data_modeling import FinDataset
+from quantstream.connectors.fmp_connector import FinancialModelingPrep
 
-dotenv.load_dotenv()
+# dotenv.load_dotenv()
 FMP_API_KEY = os.getenv("FMP_API_KEY")
 
 

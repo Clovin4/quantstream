@@ -1,5 +1,5 @@
 # type: ignore[attr-defined]
-"""Awesome `alpha_connector` is a Python cli/package created with https://github.com/TezRomacH/python-package-template"""
+"""QuantStream: A Python library for financial data analysis and portfolio management."""
 
 from importlib import metadata as importlib_metadata
 
