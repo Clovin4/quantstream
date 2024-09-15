@@ -35,13 +35,13 @@ dependencies = [
     "requests>=2.26.0",
     "pyyaml>=6.0",
     "mplfinance>=0.12.10b0",
-    "mkdocs>=1.6.1",
-    "mkdocs-material>=9.5.34",
-    "mkdocstrings[python]>=0.26.1",
 ]
 
 [project.optional-dependencies]
 dev = [
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.5.34",
+    "mkdocstrings[python]>=0.26.1",
     "bandit>=1.7.1",
     "black>=24.3.0",
     "darglint>=1.8.1",
