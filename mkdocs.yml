@@ -1,0 +1,36 @@
+# mkdocs.yml
+
+site_name: QuantStream Documentation
+site_url: https://Clovin4.github.io/quantstream/
+site_description: Official documentation for QuantStream
+site_author: Christian
+
+theme:
+  name: material
+
+# Plugins for search and Python docstrings
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          docstring_style: numpy
+
+# Navigation structure
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: installation.md
+      - Usage: usage.md
+  - API Reference:
+      - QuantStream Core: reference/quantstream_core.md
+      - Connectors: reference/quantstream_connectors.md
+  - Contributing: contributing.md
+  - License: license.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
