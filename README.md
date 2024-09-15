@@ -1,9 +1,9 @@
-
 # **QuantStream**
 
 QuantStream is a Python-based financial modeling platform designed to interact with real-time financial data via APIs, including the Financial Modeling Prep (FMP) API. The platform provides tools for model training, real-time data integration, and visualization.
 
 ## **Features**
+
 - **API Wrapper**: Integration with the FMP API for fetching financial data.
 - **Model Training**: Train models using financial data directly within the platform.
 - **Real-time Visualization**: Display and interact with real-time financial data.
@@ -13,6 +13,7 @@ QuantStream is a Python-based financial modeling platform designed to interact w
 ## **Installation**
 
 ### **Requirements**
+
 - Python 3.11 or higher
 - `uv` package for environment and dependency management
 - `ruff` for linting
@@ -26,20 +27,20 @@ QuantStream is a Python-based financial modeling platform designed to interact w
    cd quantstream
    ```
 
-2. Install `uv` and sync dependencies:
+1. Install `uv` and sync dependencies:
 
    ```bash
    curl -sSL https://install.astral.sh | sh
    uv sync --all-extras --dev
    ```
 
-3. Set up the environment variable for your API key:
+1. Set up the environment variable for your API key:
 
    ```bash
    export FMP_API_KEY=your_api_key_here
    ```
 
-4. Run the application:
+1. Run the application:
 
    ```bash
    uv run python -m quantstream

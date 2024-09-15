@@ -1,6 +1,6 @@
 # QuantStream Connectors API Reference
 
-This reference 
+This reference
 
 ::: quantstream.connectors
 
@@ -11,4 +11,3 @@ This reference
 ## FMP Connector
 
 ::: quantstream.connectors.fmp_connector
-

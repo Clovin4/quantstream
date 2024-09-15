@@ -1,4 +1,3 @@
-
 # Contributing to QuantStream
 
 Thank you for your interest in contributing to QuantStream! We welcome contributions from the community. This document outlines the process for contributing to the project.
@@ -7,49 +6,49 @@ Thank you for your interest in contributing to QuantStream! We welcome contribut
 
 1. **Fork the Repository**: Start by forking the repository to your GitHub account.
 
-2. **Create a Branch**: Create a new branch in your forked repository for your changes. Use a meaningful name, such as `feature/add-new-model` or `fix/bug-description`.
+1. **Create a Branch**: Create a new branch in your forked repository for your changes. Use a meaningful name, such as `feature/add-new-model` or `fix/bug-description`.
 
-    ```bash
-    git checkout -b feature/add-new-model
-    ```
+   ```bash
+   git checkout -b feature/add-new-model
+   ```
 
-3. **Make Your Changes**: Develop your feature or fix. Ensure your code adheres to the project’s coding standards (see Code Style and Linting).
+1. **Make Your Changes**: Develop your feature or fix. Ensure your code adheres to the project’s coding standards (see Code Style and Linting).
 
-4. **Run Tests**: Run all tests to make sure your changes do not break any existing functionality.
+1. **Run Tests**: Run all tests to make sure your changes do not break any existing functionality.
 
-    ```bash
-    uv run pytest tests/
-    ```
+   ```bash
+   uv run pytest tests/
+   ```
 
-5. **Run Code Linting**: Make sure your code passes the linting checks. We use `ruff` for linting:
+1. **Run Code Linting**: Make sure your code passes the linting checks. We use `ruff` for linting:
 
-    ```bash
-    uv run ruff check .
-    ```
+   ```bash
+   uv run ruff check .
+   ```
 
-6. **Commit Your Changes**: Commit your changes with a meaningful commit message. Please follow conventional commit guidelines (e.g., `feat: add new data model`, `fix: resolve API key issue`).
+1. **Commit Your Changes**: Commit your changes with a meaningful commit message. Please follow conventional commit guidelines (e.g., `feat: add new data model`, `fix: resolve API key issue`).
 
-    ```bash
-    git add .
-    git commit -m "feat: add new financial model for stock analysis"
-    ```
+   ```bash
+   git add .
+   git commit -m "feat: add new financial model for stock analysis"
+   ```
 
-7. **Push Your Branch**: Push the branch to your forked repository:
+1. **Push Your Branch**: Push the branch to your forked repository:
 
-    ```bash
-    git push origin feature/add-new-model
-    ```
+   ```bash
+   git push origin feature/add-new-model
+   ```
 
-8. **Open a Pull Request**: Open a pull request (PR) from your forked repository to the main QuantStream repository. Please provide a detailed description of the changes in your PR and reference any related issues.
+1. **Open a Pull Request**: Open a pull request (PR) from your forked repository to the main QuantStream repository. Please provide a detailed description of the changes in your PR and reference any related issues.
 
-9. **Review Process**: Your pull request will be reviewed by project maintainers. Please be open to feedback and make any necessary changes.
+1. **Review Process**: Your pull request will be reviewed by project maintainers. Please be open to feedback and make any necessary changes.
 
 ## Code Style and Linting
 
 QuantStream follows standard Python coding conventions and uses `ruff` for code linting. Please ensure that your code adheres to the following style guidelines:
 
 - **Code Linting**: Run `ruff` to check code style:
-  
+
   ```bash
   uv run ruff check .
   ```
