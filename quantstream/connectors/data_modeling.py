@@ -1,8 +1,21 @@
 import numpy as np
 import xarray as xr
+import mplfinance as mpf
 
 
 class FinDataset(xr.Dataset):
+    """_summary_
+
+    Args:
+        xr (_type_): _description_
+
+    Raises:
+        KeyError: _description_
+
+    Returns:
+        _type_: _description_
+    """
+
     __slots__ = ()
 
     def __init__(
@@ -15,6 +28,9 @@ class FinDataset(xr.Dataset):
 
     @property
     def name(self):
+        """
+        str: The name of the dataset.
+        """
         return self.attrs.get("name")
 
     @name.setter
@@ -22,8 +38,18 @@ class FinDataset(xr.Dataset):
         self.attrs["name"] = value
 
     @classmethod
-    def from_json(cls, data: list[dict]) -> "FinDataset":
-        """Create a FinDataset from a list of dictionaries."""
+    def from_json(cls, data):
+        """_summary_
+
+        Args:
+            data (_type_): _description_
+
+        Raises:
+            KeyError: _description_
+
+        Returns:
+            _type_: _description_
+        """
         cols = data[0].keys()
 
         raw_data = {col: [row[col] for row in data] for col in cols}
@@ -43,8 +69,9 @@ class FinDataset(xr.Dataset):
         return cls(data_vars)
 
     def plot_candlestick(self):
-        """Plot a candlestick chart."""
-        import mplfinance as mpf
+        """
+        Plot a candlestick chart.
+        """
 
         mpf.plot(
             self.to_pandas(),

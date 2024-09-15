@@ -12,6 +12,8 @@ logging.basicConfig(filename="connector.log", level=logging.DEBUG)
 
 
 class FinancialModelingPrep:
+    """_summary_"""
+
     def __init__(self, api_key: str = None):
         if not api_key or not isinstance(api_key, str):
             api_key = os.getenv("FMP_API_KEY")
@@ -28,6 +30,14 @@ class FinancialModelingPrep:
         self.api_key = api_key
 
     def get_quote(self, symbol):
+        """_summary_
+
+        Args:
+            symbol (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
         response = quote(self.api_key, symbol)
         return response
 

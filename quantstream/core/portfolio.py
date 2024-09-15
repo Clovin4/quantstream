@@ -4,17 +4,35 @@ import numpy as np
 
 
 class Portfolio:
+    """_summary_"""
+
     def __init__(self):
         self.data = xr.Dataset()
         self.fmp = FinancialModelingPrep()
 
     def add_security(self, symbol, from_date=None, to_date=None):
+        """_summary_
+
+        Args:
+            symbol (_type_): _description_
+            from_date (_type_, optional): _description_. Defaults to None.
+            to_date (_type_, optional): _description_. Defaults to None.
+        """
         security_data = self.fmp.get_daily(symbol, from_date, to_date)
         self.data = xr.merge(
             [self.data, security_data.expand_dims({"security": [symbol]})]
         )
 
     def get_metric(self, metric, securities=None):
+        """_summary_
+
+        Args:
+            metric (_type_): _description_
+            securities (_type_, optional): _description_. Defaults to None.
+
+        Returns:
+            _type_: _description_
+        """
         if securities:
             return self.data[metric].sel(security=securities)
         return self.data[metric]
@@ -24,6 +42,11 @@ class Portfolio:
         pass
 
     def calculate_metrics(self):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
         # add default risk-free rate to attrs
         self.data.attrs["risk_free_rate"] = 0.02
         self.data.attrs["annual_trading_days"] = 252
@@ -74,4 +97,5 @@ class Portfolio:
                 self.data[metric].loc[{"security": security}] = value
 
     def plot_cumulative_returns(self):
+        """plot cumulative returns for each security in the portfolio"""
         self.data["cumulative_return"].plot.line(x="time", hue="security")
