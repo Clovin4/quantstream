@@ -35,6 +35,7 @@ dependencies = [
     "requests>=2.26.0",
     "pyyaml>=6.0",
     "mplfinance>=0.12.10b0",
+    "numpydoc-validation>=0.1.0",
 ]
 
 [project.optional-dependencies]
