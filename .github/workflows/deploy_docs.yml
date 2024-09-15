@@ -3,7 +3,7 @@ name: Deploy MkDocs to GitHub Pages
 on:
   push:
     branches:
-      - main    # or whichever branch you use for new releases
+      - feat/docs    # or whichever branch you use for new releases
 
 jobs:
   build:
