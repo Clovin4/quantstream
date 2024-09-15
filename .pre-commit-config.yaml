@@ -29,3 +29,11 @@ repos:
   #   hooks:
   #     - id: numpydoc-validation
   #       exclude: (tests|docs)/.*
+
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.13 # Use the ref you want to point at
+    hooks:
+      - id: mdformat
+        additional_dependencies:
+          - mdformat-ruff
+          - ruff==22.1.0 # Pinning ruff here is optional
