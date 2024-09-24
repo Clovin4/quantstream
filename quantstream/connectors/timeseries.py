@@ -91,7 +91,10 @@ def daily(
 
     res = __return_json_v3(path=path, params=query_vars)
 
-    if res:
-        return res.get("historicalStockList", res.get("historical", None))
+    if res.get("historicalStockList", res.get("historical", None)) is None:
+        if res.get("Error Message"):
+            raise ValueError(res["Error Message"])
+        else:
+            raise ValueError("Invalid request.")
     else:
-        return res
+        return res.get("historicalStockList", res.get("historical", None))

@@ -35,13 +35,14 @@ dependencies = [
     "requests>=2.26.0",
     "pyyaml>=6.0",
     "mplfinance>=0.12.10b0",
-    "mkdocs>=1.6.1",
-    "mkdocs-material>=9.5.34",
-    "mkdocstrings[python]>=0.26.1",
+    "numpydoc-validation>=0.1.0",
 ]
 
 [project.optional-dependencies]
 dev = [
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.5.34",
+    "mkdocstrings[python]>=0.26.1",
     "bandit>=1.7.1",
     "black>=24.3.0",
     "darglint>=1.8.1",
@@ -140,3 +141,16 @@ source = ["quantstream"]
 [tool.coverage.report]
 fail_under = 50
 show_missing = true
+
+[tool.ruff]
+exclude = [
+    "docs",
+    "tests",
+    "quantstream/__main__.py",
+    "quantstream/__init__.py"
+]
+
+[tool.uv]
+dev-dependencies = [
+    "mdformat>=0.7.17",
+]

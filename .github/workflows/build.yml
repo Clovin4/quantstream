@@ -1,4 +1,4 @@
-name: build
+name: Build and Test
 
 on: [push, pull_request]
 
@@ -36,6 +36,12 @@ jobs:
     # Run ruff for style checks
     - name: Run ruff for style checks
       run: uv run ruff check .
+
+    - name: Check formatting
+      run: uv run ruff format --check .
+
+    - name: Format documentation
+      run: uv run mdformat .
 
     # Run tests
     - name: Run tests
