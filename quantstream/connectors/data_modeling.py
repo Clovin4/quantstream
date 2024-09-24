@@ -1,6 +1,6 @@
 import numpy as np
 import xarray as xr
-import mplfinance as mpf
+import plotly.graph_objects as go
 
 
 class FinDataset(xr.Dataset):
@@ -68,16 +68,32 @@ class FinDataset(xr.Dataset):
 
         return cls(data_vars)
 
-    def plot_candlestick(self):
+    def plot_candlestick(
+        self, from_date: np.datetime64 = None, to_date: np.datetime64 = None
+    ):
         """
         Plot a candlestick chart.
         """
 
-        mpf.plot(
-            self.to_pandas(),
-            type="candle",
-            style="charles",
-            volume=True,
-            ylabel="Price",
-            ylabel_lower="Shares\nTraded",
+        if to_date is None:
+            to_date = self["close"].time[-1]
+
+        if from_date is None:
+            from_date = self["close"].time[-1] - np.timedelta64(14, "D")
+
+        data = self.sel(time=slice(from_date, to_date))
+
+        fig = go.Figure(
+            data=[
+                go.Candlestick(
+                    x=data.time,
+                    open=data.open,
+                    high=data.high,
+                    low=data.low,
+                    close=data["close"],
+                    name="Candlestick",
+                )
+            ]
         )
+
+        fig.show()
