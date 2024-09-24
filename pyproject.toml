@@ -142,6 +142,14 @@ source = ["quantstream"]
 fail_under = 50
 show_missing = true
 
+[tool.ruff]
+exclude = [
+    "docs",
+    "tests",
+    "quantstream/__main__.py",
+    "quantstream/__init__.py"
+]
+
 [tool.uv]
 dev-dependencies = [
     "mdformat>=0.7.17",
