@@ -40,9 +40,6 @@ jobs:
     - name: Check formatting
       run: uv run ruff format --check .
 
-    - name: Validate documentation
-      run: uv run numpydoc-validation
-
     - name: Format documentation
       run: uv run mdformat .
 

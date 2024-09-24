@@ -843,6 +843,18 @@ wheels = [
 ]
 
 [[package]]
+name = "mdformat"
+version = "0.7.17"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "markdown-it-py" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/df/86/6374cc48a89862cfc8e350a65d6af47792e83e7684f13e1222afce110a41/mdformat-0.7.17.tar.gz", hash = "sha256:a9dbb1838d43bb1e6f03bd5dca9412c552544a9bc42d6abb5dc32adfe8ae7c0d", size = 36305 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/bf/d9/4790d04eb7bcc77f02000232b75e8356c5443ee9f6fe28a7786de96485c0/mdformat-0.7.17-py3-none-any.whl", hash = "sha256:91ffc5e203f5814a6ad17515c77767fd2737fc12ffd8b58b7bb1d8b9aa6effaa", size = 28910 },
+]
+
+[[package]]
 name = "mdurl"
 version = "0.1.2"
 source = { registry = "https://pypi.org/simple" }
@@ -1703,6 +1715,11 @@ dev = [
     { name = "ruff" },
 ]
 
+[package.dev-dependencies]
+dev = [
+    { name = "mdformat" },
+]
+
 [package.metadata]
 requires-dist = [
     { name = "bandit", marker = "extra == 'dev'", specifier = ">=1.7.1" },
@@ -1744,6 +1761,9 @@ requires-dist = [
     { name = "typer", extras = ["all"], specifier = ">=0.9.0" },
     { name = "xarray", specifier = ">=2024.2.0" },
 ]
+
+[package.metadata.requires-dev]
+dev = [{ name = "mdformat", specifier = ">=0.7.17" }]
 
 [[package]]
 name = "referencing"

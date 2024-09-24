@@ -141,3 +141,8 @@ source = ["quantstream"]
 [tool.coverage.report]
 fail_under = 50
 show_missing = true
+
+[tool.uv]
+dev-dependencies = [
+    "mdformat>=0.7.17",
+]
