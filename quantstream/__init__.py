@@ -3,8 +3,11 @@
 
 from importlib import metadata as importlib_metadata
 
-from .connectors.fmp_connector import FinancialModelingPrep
-from .core.portfolio import Portfolio
+from .connectors.fmp_connector import FmpConnector
+from .groups.portfolio import Portfolio
+
+# import all functions from financial_timeseries.returns
+from .financial_timeseries.returns import absolute_returns, percentage_returns, log_returns, rolling_statistics
 
 
 def get_version() -> str:
@@ -16,4 +19,5 @@ def get_version() -> str:
 
 version: str = get_version()
 
-__all__ = ["FinancialModelingPrep", "Portfolio", "version"]
+__all__ = ["FmpConnector", "Portfolio", "version"]
+__all__ += ["absolute_returns", "percentage_returns", "log_returns", "rolling_statistics"]

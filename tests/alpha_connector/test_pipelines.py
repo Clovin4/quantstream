@@ -3,8 +3,8 @@ import os
 import pytest
 import xarray as xr
 
-from quantstream.connectors.data_modeling import FinDataset
-from quantstream.connectors.fmp_connector import FinancialModelingPrep
+from quantstream.connectors.findataset import FinDataset
+from quantstream.connectors.fmp_connector import FmpConnector
 
 FMP_API_KEY = os.getenv("FMP_API_KEY")
 
@@ -12,7 +12,7 @@ FMP_API_KEY = os.getenv("FMP_API_KEY")
 @pytest.fixture
 def fmp():
     # at some point we'll need to use a secrets manager
-    return FinancialModelingPrep(api_key=FMP_API_KEY)
+    return FmpConnector(api_key=FMP_API_KEY)
 
 
 #################### unit tests ####################
@@ -37,6 +37,30 @@ def test_get_intraday(fmp):
 def test_get_intraday_bad_time_delta(fmp):
     with pytest.raises(ValueError):
         fmp.get_intraday("AAPL", "1m", "2021-01-01", "2021-01-02")
+
+def test_get_company_profile(fmp):
+    response = fmp.get_company_profile("AAPL")
+    assert "symbol" in response.keys()
+
+def test_get_income_statement(fmp):
+    response = fmp.get_income_statement("AAPL")
+    assert isinstance(response, list)
+
+def test_get_balance_sheet_statement(fmp):
+    response = fmp.get_balance_sheet("AAPL")
+    assert isinstance(response, list)
+
+def test_get_cash_flow_statement(fmp):
+    response = fmp.get_cash_flow("AAPL")
+    assert isinstance(response, list)
+
+def test_list_symbols(fmp):
+    response = fmp.list_symbols()
+    assert isinstance(response, list)
+
+def test_list_etfs(fmp):
+    response = fmp.list_etfs()
+    assert isinstance(response, list)
 
 
 #################### integration tests ####################
