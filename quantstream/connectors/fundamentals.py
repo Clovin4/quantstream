@@ -719,20 +719,6 @@ def symbols_list(apikey: str) -> typing.Optional[typing.List[typing.Dict]]:
     return __return_json_v3(path=path, params=query_vars)
 
 
-def etf_list(apikey: str) -> typing.Optional[typing.List[typing.Dict]]:
-    """
-    Query FMP /etf/list/ API
-
-    All ETF symbols
-
-    :param apikey: Your API key.
-    :return: A list of dictionaries.
-    """
-    path = "etf/list"
-    query_vars = {"apikey": apikey}
-    return __return_json_v3(path=path, params=query_vars)
-
-
 def available_traded_list(apikey: str) -> typing.Optional[typing.List[typing.Dict]]:
     """
     Query FMP /available-traded/list/ API

@@ -1,7 +1,6 @@
 """basic time series equations"""
 
 import numpy as np
-from typing import Union, List
 
 import pandas as pd
 

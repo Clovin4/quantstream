@@ -1,4 +1,3 @@
-import operator
 import typing
 
 from .url_methods import __return_json_v3, __validate_time_delta
