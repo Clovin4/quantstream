@@ -28,7 +28,7 @@ jobs:
           enable-cache: true
 
       - name: Build package
-        run: uv run build
+        run: uv build
 
       - name: Publish package
         run: |
