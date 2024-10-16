@@ -4,14 +4,22 @@ import logging
 import os
 
 
-from .data_modeling import FinDataset
+from .findataset import FinDataset
 from .timeseries import daily, intraday, quote
+from .fundamentals import (
+    company_profile,
+    stock_list,
+    etf_list,
+    income_statement,
+    balance_sheet_statement,
+    cash_flow_statement,
+)
 
 # log to txt file
 logging.basicConfig(filename="connector.log", level=logging.DEBUG)
 
 
-class FinancialModelingPrep:
+class FmpConnector:
     """_summary_"""
 
     def __init__(self, api_key: str = None):
@@ -28,6 +36,14 @@ class FinancialModelingPrep:
                 )
             logging.info("FMP API key loaded from environment variable.")
         self.api_key = api_key
+
+    def list_symbols(self) -> dict:
+        """https://financialmodelingprep.com/api/v3/stock/list"""
+        return stock_list(self.api_key)
+
+    def list_etfs(self) -> dict:
+        """https://financialmodelingprep.com/api/v3/etf/list"""
+        return etf_list(self.api_key)
 
     def get_quote(self, symbol):
         """_summary_
@@ -75,6 +91,18 @@ class FinancialModelingPrep:
     def get_intraday(
         self, symbol, time_delta, from_date, to_date, time_series=None
     ) -> FinDataset:
+        """Get intraday financial data for a given symbol.
+
+        Args:
+            symbol (str): The symbol of the financial instrument.
+            time_delta (str): The time interval for the data (e.g., '1min', '5min', '15min', '30min', '60min').
+            from_date (str): The start date of the data in the format 'YYYY-MM-DD'.
+            to_date (str): The end date of the data in the format 'YYYY-MM-DD'.
+            time_series (str, optional): The type of time series data to retrieve (e.g., 'open', 'high', 'low', 'close', 'volume'). Defaults to None.
+
+        Returns:
+            FinDataset: A dataset containing the intraday financial data.
+        """
         response = intraday(
             self.api_key, symbol, time_delta, from_date, to_date, time_series
         )
@@ -84,3 +112,40 @@ class FinancialModelingPrep:
         ds.attrs["to_date"] = to_date
 
         return ds
+
+    def get_company_profile(self, symbol):
+        try:
+            response = company_profile(self.api_key, symbol)
+            if isinstance(response, list):
+                return response[0]
+            return response
+        except Exception as e:
+            logging.error(f"Error fetching company profile for {symbol}: {str(e)}")
+            raise
+
+    def get_income_statement(self, symbol: str, period: str = "annual"):
+        """https://site.financialmodelingprep.com/developer/docs#income-statements-financial-statements
+
+        Args:
+            symbol (_type_): _description_
+            period (_type_): _description_
+        """
+        return income_statement(self.api_key, symbol, period)
+
+    def get_balance_sheet(self, symbol: str, period: str = "annual"):
+        """_summary_
+
+        Args:
+            symbol (_type_): _description_
+            period (_type_): _description_
+        """
+        return balance_sheet_statement(self.api_key, symbol, period)
+
+    def get_cash_flow(self, symbol: str, period: str = "annual"):
+        """_summary_
+
+        Args:
+            symbol (_type_): _description_
+            period (_type_): _description_
+        """
+        return cash_flow_statement(self.api_key, symbol, period)

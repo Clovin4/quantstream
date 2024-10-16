@@ -1,5 +1,5 @@
 import xarray as xr
-from ..connectors.fmp_connector import FinancialModelingPrep
+from ..connectors.fmp_connector import FmpConnector
 import numpy as np
 
 
@@ -8,7 +8,7 @@ class Portfolio:
 
     def __init__(self):
         self.data = xr.Dataset()
-        self.fmp = FinancialModelingPrep()
+        self.fmp = FmpConnector()
 
     def add_security(self, symbol, from_date=None, to_date=None):
         """_summary_
