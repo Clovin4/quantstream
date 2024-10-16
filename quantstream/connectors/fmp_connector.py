@@ -45,7 +45,7 @@ class FmpConnector:
         """https://financialmodelingprep.com/api/v3/etf/list"""
         return etf_list(self.api_key)
 
-    def get_quote(self, symbol):
+    def get_quote(self, symbol) -> dict:
         """_summary_
 
         Args:

@@ -153,4 +153,5 @@ exclude = [
 [tool.uv]
 dev-dependencies = [
     "mdformat>=0.7.17",
+    "mkdocs-jupyter>=0.25.1",
 ]

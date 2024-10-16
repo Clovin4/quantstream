@@ -10,6 +10,7 @@ theme:
 
 # Plugins for search and Python docstrings
 plugins:
+  - mkdocs-jupyter
   - search
   - mkdocstrings:
       handlers:
@@ -21,9 +22,11 @@ nav:
   - Home: index.md
   - Getting Started:
       - Installation: installation.md
-      - Usage: usage.md
+      - Usage: usage/notebooks/0.0.0-notes.ipynb
+      - Notebooks:
+          - Financial Timeseries: usage/notebooks/0.0.1-financial-timeseries.ipynb
   - API Reference:
-      - QuantStream Core: reference/quantstream_core.md
+      - Analysis Class: reference/quantstream_core.md
       - Connectors: reference/quantstream_connectors.md
   - Contributing: contributing.md
   - License: license.md

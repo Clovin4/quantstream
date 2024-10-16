@@ -1,9 +1,5 @@
-# QuantStream Core
+# QuantStream Analysis Class
 
-## Market
+::: quantstream.groups.market
 
-::: quantstream.core.market
-
-## Portfolio
-
-::: quantstream.core.portfolio
+::: quantstream.groups.portfolio

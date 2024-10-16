@@ -55,9 +55,9 @@ class FinDataset(xr.Dataset):
         raw_data = {col: [row[col] for row in data] for col in cols}
 
         if "date" in raw_data:
-            index = np.array(raw_data.pop("date"), dtype="datetime64")
+            index = np.array(raw_data.pop("date"), dtype="datetime64[ns]")
         elif "timestamp" in raw_data:
-            index = np.array(raw_data.pop("timestamp"), dtype="datetime64")
+            index = np.array(raw_data.pop("timestamp"), dtype="datetime64[ns]")
         else:
             raise KeyError("No date or timestamp column found in data.")
 
