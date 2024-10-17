@@ -6,7 +6,7 @@ site_description: Official documentation for QuantStream
 site_author: Christian
 
 theme:
-  name: material
+  name: swan
 
 # Plugins for search and Python docstrings
 plugins:

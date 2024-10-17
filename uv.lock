@@ -1160,6 +1160,18 @@ wheels = [
 ]
 
 [[package]]
+name = "mkdocs-swan"
+version = "0.4.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "mkdocs-material" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/b5/f9/b15d5bf069c699bfb89f51994f4d1f3bede8b20d875403ecae4bc230e9db/mkdocs-swan-0.4.0.tar.gz", hash = "sha256:61e93e6aa394292ff16262b137f18a7ceba4dd259e5309aa668f42446f4c7afd", size = 703114 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/59/34/d907a909ccc9febd6f8444fd7d5a565609f58ea25f4af7bb18912614cba0/mkdocs_swan-0.4.0-py3-none-any.whl", hash = "sha256:a452d0e3403e4ad032ab6f9e4cab04c71c9b15427c5051a1c62341aaf64a6a82", size = 713627 },
+]
+
+[[package]]
 name = "mkdocstrings"
 version = "0.26.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1972,7 +1984,7 @@ wheels = [
 
 [[package]]
 name = "quantstream"
-version = "0.0.2"
+version = "0.0.3"
 source = { editable = "." }
 dependencies = [
     { name = "matplotlib" },
@@ -2023,6 +2035,7 @@ dev = [
 dev = [
     { name = "mdformat" },
     { name = "mkdocs-jupyter" },
+    { name = "mkdocs-swan" },
     { name = "twine" },
 ]
 
@@ -2072,6 +2085,7 @@ requires-dist = [
 dev = [
     { name = "mdformat", specifier = ">=0.7.18" },
     { name = "mkdocs-jupyter", specifier = ">=0.25.1" },
+    { name = "mkdocs-swan", specifier = ">=0.4.0" },
     { name = "twine", specifier = ">=5.1.1" },
 ]
 

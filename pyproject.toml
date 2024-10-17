@@ -154,5 +154,6 @@ exclude = [
 dev-dependencies = [
     "mdformat>=0.7.18",
     "mkdocs-jupyter>=0.25.1",
+    "mkdocs-swan>=0.4.0",
     "twine>=5.1.1",
 ]
