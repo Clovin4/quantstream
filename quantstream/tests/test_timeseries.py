@@ -13,7 +13,7 @@ def set_api_key():
     set_fmp_api_key("test_key")
 
 def test_get_quote():
-    data = get_quote("AAPL")
+    data = get_quote(symbol="AAPL")
     assert isinstance(data, list)
     assert len(data) == 1
     assert data[0]["symbol"] == "AAPL"

@@ -53,6 +53,7 @@ def get_daily(
     symbol: typing.Union[str, list],
     from_date: str = None,
     to_date: str = None,
+    full: bool = False,
 ) -> "FinDataset":
     """Fetches daily historical stock prices for the specified symbol(s).
 
@@ -76,4 +77,9 @@ def get_daily(
     """
     apikey = GLOBAL_API_KEYS["fmp"]
     data = historical_price_full(apikey, symbol, from_date, to_date)
-    return FinDataset.from_json(data)
+    ds = FinDataset.from_json(data)
+
+    if full:
+        return ds
+
+    return ds[["open", "high", "low", "close", "adjClose", "volume"]]
