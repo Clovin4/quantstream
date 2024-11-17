@@ -95,7 +95,7 @@ class FinDataset(xr.Dataset):
 
     def plot_candlestick(
         self, from_date: np.datetime64 = None, to_date: np.datetime64 = None
-    ):
+    ) -> go.Figure:
         """
         Plot a candlestick chart.
         """
@@ -119,4 +119,4 @@ class FinDataset(xr.Dataset):
             ]
         )
 
-        fig.show()
+        return fig
