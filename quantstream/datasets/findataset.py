@@ -1,7 +1,7 @@
 import numpy as np
 import xarray as xr
 import plotly.graph_objects as go
-from typing import Any, Optional, List, Dict
+from typing import Any, List, Dict
 from collections import defaultdict
 
 
