@@ -4,8 +4,8 @@ from quantstream.config import set_fmp_api_key
 import pytest
 import datetime
 
-today = datetime.date.today()
-yesterday = today - datetime.timedelta(days=1)
+from_date = datetime.date.today() - datetime.timedelta(days=2)
+to_date = from_date - datetime.timedelta(days=7)
 
 @pytest.fixture
 def set_api_key():
@@ -20,11 +20,11 @@ def test_get_quote():
 
 
 def test_get_intraday():
-    data = get_intraday("AAPL", "5min", yesterday, today)
+    data = get_intraday(symbol="AAPL", time_delta="5min", from_date=from_date, to_date=to_date)
     assert isinstance(data, FinDataset)
     assert len(data) > 0
 
 def test_get_daily():
-    data = get_daily("AAPL", yesterday, today)
+    data = get_daily(symbol="AAPL", from_date=from_date, to_date=to_date)
     assert isinstance(data, FinDataset)
     assert len(data) > 0
