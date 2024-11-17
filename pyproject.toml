@@ -158,6 +158,7 @@ dev-dependencies = [
     "mdformat>=0.7.18",
     "mkdocs-jupyter>=0.25.1",
     "mkdocs-swan>=0.4.0",
+    "pre-commit>=3.8.0",
     "pytest>=8.3.3",
     "selenium>=4.25.0",
     "twine>=5.1.1",
