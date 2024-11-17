@@ -7,6 +7,7 @@ site_author: Christian
 
 theme:
   name: swan
+  logo: images/logo.png
 
 # Plugins for search and Python docstrings
 plugins:
@@ -22,12 +23,14 @@ nav:
   - Home: index.md
   - Getting Started:
       - Installation: installation.md
-      - Usage: usage/notebooks/0.0.0-notes.ipynb
-      - Notebooks:
-          - Financial Timeseries: usage/notebooks/0.0.1-financial-timeseries.ipynb
+      - Basics: usage/notebooks/getting-started.ipynb
+      - Workflows:
+          - Financial Timeseries Analysis: usage/notebooks/0.0.1-financial-timeseries.ipynb
   - API Reference:
-      - Analysis Class: reference/quantstream_core.md
-      - Connectors: reference/quantstream_connectors.md
+      - Datasets: reference/quantstream_datasets.md
+      - Decorators: reference/quantstream_decorators.md
+      - Modules: reference/quantstream_models.md
+      - Utilities: reference/quantstream_utils.md
   - Contributing: contributing.md
   - License: license.md
 

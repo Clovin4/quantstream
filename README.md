@@ -1,13 +1,13 @@
 # **QuantStream**
 
-QuantStream is a Python-based financial modeling platform designed to interact with real-time financial data via APIs, including the Financial Modeling Prep (FMP) API. The platform provides tools for model training, real-time data integration, and visualization.
+QuantStream is a Python-based financial modeling preperation platform designed to interact with real-time financial data via APIs, including the Financial Modeling Prep (FMP) API. The platform provides tools for model training, real-time data integration, and visualization. It is designed to be a central data structure for financial modeling and analysis based on Xarray, allowing users to easily access and manipulate financial data for their projects.
 
 ## **Features**
 
-- **API Wrapper**: Integration with the FMP API for fetching financial data.
-- **Model Training**: Train models using financial data directly within the platform.
-- **Real-time Visualization**: Display and interact with real-time financial data.
+- **FMP API Wrapper**: Integration with the FMP API for fetching financial data.
+- **Data Visualization**: Display and interact with real-time financial data.
 - **Data Export**: Download financial data in various formats such as CSV.
+- **Data Storage**: Store financial data easily in a SQLite databases.
 - **Extensible Architecture**: Easily add new models or financial data providers.
 
 ## **Installation**
@@ -47,30 +47,6 @@ QuantStream is a Python-based financial modeling platform designed to interact w
    ```
 
 ## **Usage**
-
-### **Train a Model**
-
-```bash
-uv run python -m quantstream.train_model --symbol AAPL --model linear
-```
-
-This command trains a linear model for Apple Inc. using real-time financial data.
-
-### **Get Real-Time Data**
-
-```bash
-uv run python -m quantstream.fetch_data --symbol AAPL
-```
-
-Fetches the latest financial data for Apple Inc. from the FMP API.
-
-### **Visualize Data**
-
-The platform comes with visualization tools for real-time financial data. You can run the visualization module using:
-
-```bash
-uv run python -m quantstream.visualize --symbol AAPL
-```
 
 ## **Development Workflow**
 
