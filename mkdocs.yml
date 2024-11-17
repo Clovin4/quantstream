@@ -31,7 +31,7 @@ nav:
       - Decorators: reference/quantstream_decorators.md
       - Modules: reference/quantstream_models.md
       - Utilities: reference/quantstream_utils.md
-  - Contributing: 
+  - Contributing:
       - Overview: contributing.md
       - Coverage Report: htmlcov/index.html
   - License: license.md

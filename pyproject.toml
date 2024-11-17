@@ -160,6 +160,7 @@ dev-dependencies = [
     "mkdocs-swan>=0.4.0",
     "pre-commit>=3.8.0",
     "pytest>=8.3.3",
+    "ruff>=0.6.5",
     "selenium>=4.25.0",
     "twine>=5.1.1",
     "weasyprint>=62.3",
