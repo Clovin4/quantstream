@@ -1,0 +1,2633 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Official documentation for QuantStream">
+      
+      
+        <meta name="author" content="Christian">
+      
+      
+        <link rel="canonical" href="https://Clovin4.github.io/quantstream/reference/quantstream_models/">
+      
+      
+        <link rel="prev" href="../quantstream_decorators/">
+      
+      
+        <link rel="next" href="../quantstream_utils/">
+      
+      
+      <link rel="icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>Modules - QuantStream Documentation</title>
+      
+    
+    
+
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      
+      
+
+
+    
+<link rel="stylesheet" type="text/css" href="../../css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+
+<script type="text/javascript">
+    if ( window !== window.parent ) {
+        // The page is in an iframe
+        window.addEventListener("DOMContentLoaded", function externalLinks() {
+            var anchors = document.getElementsByTagName("a");
+            for (var i = 0; i < anchors.length; i++) {
+                    if (anchors[i].hostname !== window.location.hostname) {
+                        anchors[i].setAttribute("target", "_blank");
+                        anchors[i].setAttribute("rel", "noopener");
+                    }
+                    // Handle 'Open in SWAN' badges in the parent JupyterLab window
+                    if (anchors[i].hostname == 'cern.ch' && anchors[i].pathname == '/swanserver/cgi-bin/go') {
+                        const projectUrl = new URLSearchParams(anchors[i].search).get('projurl');
+                        if (projectUrl) {
+                                anchors[i].onclick = () => {
+                                window.parent.postMessage(projectUrl,'*');
+                                //  Skip redirecting the iframe page to the link 
+                                return false;
+                            }
+                        }
+                    }
+            }
+        }); 
+    }
+</script>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quantstream-modules" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="QuantStream Documentation" class="md-header__button md-logo" aria-label="QuantStream Documentation" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            QuantStream Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Modules
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="QuantStream Documentation" class="md-nav__button md-logo" aria-label="QuantStream Documentation" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    QuantStream Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/notebooks/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Workflows
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Workflows
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/notebooks/financial-timeseries-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Financial Timeseries Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantstream_datasets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Datasets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantstream_decorators/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decorators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.timeseries" class="md-nav__link">
+    <span class="md-ellipsis">
+      timeseries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.timeseries.get_daily" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_daily
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.timeseries.get_intraday" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_intraday
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.timeseries.get_quote" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_quote
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      fundamentals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals.get_balance_sheet_statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_balance_sheet_statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals.get_cash_flow_statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_cash_flow_statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals.get_company_profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_company_profile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals.get_historical_market_capitalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_historical_market_capitalization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals.get_income_statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_income_statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals.get_key_executives" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_key_executives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals.get_market_capitalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_market_capitalization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.option_chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      option_chain
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.economics" class="md-nav__link">
+    <span class="md-ellipsis">
+      economics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.economics.get_fred_series" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_fred_series
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantstream_utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Utilities
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../htmlcov/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Coverage Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.timeseries" class="md-nav__link">
+    <span class="md-ellipsis">
+      timeseries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.timeseries.get_daily" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_daily
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.timeseries.get_intraday" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_intraday
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.timeseries.get_quote" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_quote
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      fundamentals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals.get_balance_sheet_statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_balance_sheet_statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals.get_cash_flow_statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_cash_flow_statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals.get_company_profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_company_profile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals.get_historical_market_capitalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_historical_market_capitalization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals.get_income_statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_income_statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals.get_key_executives" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_key_executives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.fundamentals.get_market_capitalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_market_capitalization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.option_chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      option_chain
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.economics" class="md-nav__link">
+    <span class="md-ellipsis">
+      economics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantstream.modules.economics.get_fred_series" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_fred_series
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="quantstream-modules">QuantStream Modules<a class="headerlink" href="#quantstream-modules" title="Permanent link">&para;</a></h1>
+<p>The <code>quantstream.modules</code> module provides a set of models for financial modeling and analysis based on Xarray, allowing users to easily access and manipulate financial data for their projects.</p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="quantstream.modules.timeseries"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="quantstream.modules.timeseries.get_daily" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_daily</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">from_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">to_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#quantstream.modules.timeseries.get_daily" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetches daily historical stock prices for the specified symbol(s).</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>apikey</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The API key for accessing the stock price data.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>symbol</code></td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[str, <span title="typing.List">List</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The symbol(s) of the stock(s) to fetch data for.
+It can be a single symbol or a list of symbols.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>from_date</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The starting date for the historical data.
+If not provided, it fetches data from the earliest available date.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>to_date</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The ending date for the historical data.
+If not provided, it fetches data up to the latest available date.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="quantstream.datasets.findataset.FinDataset" href="../quantstream_datasets/#quantstream.datasets.findataset.FinDataset">FinDataset</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>typing.Optional[typing.List[typing.Dict]]: A list of dictionaries containing the historical stock prices.
+Each dictionary represents a single day's data and includes information such as the date, open price,
+high price, low price, close price, volume, and adjusted close price.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>ValueError</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the API response indicates an error or an invalid request.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>quantstream/modules/timeseries.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_api_key</span><span class="p">(</span><span class="s2">&quot;fmp&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_daily</span><span class="p">(</span>
+    <span class="n">symbol</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">],</span>
+    <span class="n">from_date</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">to_date</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">full</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;FinDataset&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fetches daily historical stock prices for the specified symbol(s).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        apikey (str): The API key for accessing the stock price data.</span>
+<span class="sd">        symbol (typing.Union[str, typing.List]): The symbol(s) of the stock(s) to fetch data for.</span>
+<span class="sd">            It can be a single symbol or a list of symbols.</span>
+<span class="sd">        from_date (str, optional): The starting date for the historical data.</span>
+<span class="sd">            If not provided, it fetches data from the earliest available date.</span>
+<span class="sd">        to_date (str, optional): The ending date for the historical data.</span>
+<span class="sd">            If not provided, it fetches data up to the latest available date.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        typing.Optional[typing.List[typing.Dict]]: A list of dictionaries containing the historical stock prices.</span>
+<span class="sd">            Each dictionary represents a single day&#39;s data and includes information such as the date, open price,</span>
+<span class="sd">            high price, low price, close price, volume, and adjusted close price.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If the API response indicates an error or an invalid request.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">apikey</span> <span class="o">=</span> <span class="n">GLOBAL_API_KEYS</span><span class="p">[</span><span class="s2">&quot;fmp&quot;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">historical_price_full</span><span class="p">(</span><span class="n">apikey</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">from_date</span><span class="p">,</span> <span class="n">to_date</span><span class="p">)</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">FinDataset</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">full</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ds</span>
+
+    <span class="k">return</span> <span class="n">ds</span><span class="p">[[</span><span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="s2">&quot;high&quot;</span><span class="p">,</span> <span class="s2">&quot;low&quot;</span><span class="p">,</span> <span class="s2">&quot;close&quot;</span><span class="p">,</span> <span class="s2">&quot;adjClose&quot;</span><span class="p">,</span> <span class="s2">&quot;volume&quot;</span><span class="p">]]</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="quantstream.modules.timeseries.get_intraday" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_intraday</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">time_delta</span><span class="p">,</span> <span class="n">from_date</span><span class="p">,</span> <span class="n">to_date</span><span class="p">,</span> <span class="n">lean</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#quantstream.modules.timeseries.get_intraday" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetches intraday historical chart data for a given symbol.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>symbol</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The symbol for the stock or security.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>time_delta</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The time interval for the data (e.g., '1min', '5min', '15min', '30min', '1hour', '4hour).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>from_date</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The starting date for the data in the format 'YYYY-MM-DD'.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>to_date</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The ending date for the data in the format 'YYYY-MM-DD'.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>time_series</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The type of time series data to fetch. Defaults to fmp.default_line_param.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="quantstream.datasets.findataset.FinDataset" href="../quantstream_datasets/#quantstream.datasets.findataset.FinDataset">FinDataset</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>typing.Optional[typing.List[typing.Dict]]: A list of dictionaries representing the intraday historical chart data.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>quantstream/modules/timeseries.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_api_key</span><span class="p">(</span><span class="s2">&quot;fmp&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_intraday</span><span class="p">(</span>
+    <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">time_delta</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">from_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">to_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">lean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;FinDataset&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fetches intraday historical chart data for a given symbol.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        symbol (str): The symbol for the stock or security.</span>
+<span class="sd">        time_delta (str): The time interval for the data (e.g., &#39;1min&#39;, &#39;5min&#39;, &#39;15min&#39;, &#39;30min&#39;, &#39;1hour&#39;, &#39;4hour).</span>
+<span class="sd">        from_date (str): The starting date for the data in the format &#39;YYYY-MM-DD&#39;.</span>
+<span class="sd">        to_date (str): The ending date for the data in the format &#39;YYYY-MM-DD&#39;.</span>
+<span class="sd">        time_series (str, optional): The type of time series data to fetch. Defaults to fmp.default_line_param.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        typing.Optional[typing.List[typing.Dict]]: A list of dictionaries representing the intraday historical chart data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">apikey</span> <span class="o">=</span> <span class="n">GLOBAL_API_KEYS</span><span class="p">[</span><span class="s2">&quot;fmp&quot;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">historical_chart</span><span class="p">(</span><span class="n">apikey</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">time_delta</span><span class="p">,</span> <span class="n">from_date</span><span class="p">,</span> <span class="n">to_date</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">FinDataset</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="quantstream.modules.timeseries.get_quote" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_quote</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span></code>
+
+<a href="#quantstream.modules.timeseries.get_quote" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve quote information for a given symbol or list of symbols.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>apikey</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The API key for accessing the quote information.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>symbol</code></td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[str, <span title="typing.List">List</span>[str]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The symbol or list of symbols for which to retrieve quote information.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[list[dict]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>typing.Optional[typing.List[typing.Dict]]: A list of dictionaries containing the quote information for the given symbol(s).
+Each dictionary represents a quote and contains various fields such as symbol, price, volume, etc.
+Returns None if no quote information is available.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>quantstream/modules/timeseries.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_api_key</span><span class="p">(</span><span class="s2">&quot;fmp&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_quote</span><span class="p">(</span><span class="n">symbol</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Retrieve quote information for a given symbol or list of symbols.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        apikey (str): The API key for accessing the quote information.</span>
+<span class="sd">        symbol (typing.Union[str, typing.List[str]]): The symbol or list of symbols for which to retrieve quote information.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        typing.Optional[typing.List[typing.Dict]]: A list of dictionaries containing the quote information for the given symbol(s).</span>
+<span class="sd">            Each dictionary represents a quote and contains various fields such as symbol, price, volume, etc.</span>
+<span class="sd">            Returns None if no quote information is available.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">apikey</span> <span class="o">=</span> <span class="n">GLOBAL_API_KEYS</span><span class="p">[</span><span class="s2">&quot;fmp&quot;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">quote</span><span class="p">(</span><span class="n">apikey</span><span class="p">,</span> <span class="n">symbol</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="quantstream.modules.fundamentals"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="quantstream.modules.fundamentals.get_balance_sheet_statement" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_balance_sheet_statement</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="s1">&#39;annual&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#quantstream.modules.fundamentals.get_balance_sheet_statement" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><em>summary</em></p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>symbol</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em></p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>period</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em>. Defaults to "annual".</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;annual&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>limit</code></td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em>. Defaults to 10.</p>
+              </div>
+            </td>
+            <td>
+                  <code>10</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>download</code></td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em>. Defaults to False.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="typing.List">List</span>[<span title="typing.Dict">Dict</span>], None]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>typing.Union[typing.List[typing.Dict], None]: <em>description</em></p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>quantstream/modules/fundamentals.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_api_key</span><span class="p">(</span><span class="s2">&quot;fmp&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_balance_sheet_statement</span><span class="p">(</span>
+    <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">period</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;annual&quot;</span><span class="p">,</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">download</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        symbol (str): _description_</span>
+<span class="sd">        period (str, optional): _description_. Defaults to &quot;annual&quot;.</span>
+<span class="sd">        limit (int, optional): _description_. Defaults to 10.</span>
+<span class="sd">        download (bool, optional): _description_. Defaults to False.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        typing.Union[typing.List[typing.Dict], None]: _description_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">apikey</span> <span class="o">=</span> <span class="n">GLOBAL_API_KEYS</span><span class="p">[</span><span class="s2">&quot;fmp&quot;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">balance_sheet_statement</span><span class="p">(</span><span class="n">apikey</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">download</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="quantstream.modules.fundamentals.get_cash_flow_statement" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_cash_flow_statement</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="s1">&#39;annual&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#quantstream.modules.fundamentals.get_cash_flow_statement" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><em>summary</em></p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>symbol</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em></p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>period</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em>. Defaults to "annual".</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;annual&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>limit</code></td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em>. Defaults to 10.</p>
+              </div>
+            </td>
+            <td>
+                  <code>10</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>download</code></td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em>. Defaults to False.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="typing.List">List</span>[<span title="typing.Dict">Dict</span>], None]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>typing.Union[typing.List[typing.Dict], None]: <em>description</em></p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>quantstream/modules/fundamentals.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_api_key</span><span class="p">(</span><span class="s2">&quot;fmp&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_cash_flow_statement</span><span class="p">(</span>
+    <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">period</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;annual&quot;</span><span class="p">,</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">download</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        symbol (str): _description_</span>
+<span class="sd">        period (str, optional): _description_. Defaults to &quot;annual&quot;.</span>
+<span class="sd">        limit (int, optional): _description_. Defaults to 10.</span>
+<span class="sd">        download (bool, optional): _description_. Defaults to False.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        typing.Union[typing.List[typing.Dict], None]: _description_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">apikey</span> <span class="o">=</span> <span class="n">GLOBAL_API_KEYS</span><span class="p">[</span><span class="s2">&quot;fmp&quot;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">cash_flow_statement</span><span class="p">(</span><span class="n">apikey</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">download</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="quantstream.modules.fundamentals.get_company_profile" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_company_profile</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span></code>
+
+<a href="#quantstream.modules.fundamentals.get_company_profile" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><em>summary</em></p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>symbol</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em></p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[<span title="typing.Dict">Dict</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>typing.Optional[typing.List[typing.Dict]]: <em>description</em></p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>quantstream/modules/fundamentals.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_api_key</span><span class="p">(</span><span class="s2">&quot;fmp&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_company_profile</span><span class="p">(</span><span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        symbol (str): _description_</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        typing.Optional[typing.List[typing.Dict]]: _description_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">apikey</span> <span class="o">=</span> <span class="n">GLOBAL_API_KEYS</span><span class="p">[</span><span class="s2">&quot;fmp&quot;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">company_profile</span><span class="p">(</span><span class="n">apikey</span><span class="p">,</span> <span class="n">symbol</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="quantstream.modules.fundamentals.get_historical_market_capitalization" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_historical_market_capitalization</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></code>
+
+<a href="#quantstream.modules.fundamentals.get_historical_market_capitalization" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><em>summary</em></p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>symbol</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em></p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>limit</code></td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em>. Defaults to 10.</p>
+              </div>
+            </td>
+            <td>
+                  <code>10</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[<span title="typing.Dict">Dict</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>typing.Optional[typing.List[typing.Dict]]: <em>description</em></p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>quantstream/modules/fundamentals.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_api_key</span><span class="p">(</span><span class="s2">&quot;fmp&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_historical_market_capitalization</span><span class="p">(</span>
+    <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        symbol (str): _description_</span>
+<span class="sd">        limit (int, optional): _description_. Defaults to 10.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        typing.Optional[typing.List[typing.Dict]]: _description_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">apikey</span> <span class="o">=</span> <span class="n">GLOBAL_API_KEYS</span><span class="p">[</span><span class="s2">&quot;fmp&quot;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">historical_market_capitalization</span><span class="p">(</span><span class="n">apikey</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="quantstream.modules.fundamentals.get_income_statement" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_income_statement</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="s1">&#39;annual&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#quantstream.modules.fundamentals.get_income_statement" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><em>summary</em></p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>symbol</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em></p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>period</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em>. Defaults to "annual".</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;annual&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>limit</code></td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em>. Defaults to 10.</p>
+              </div>
+            </td>
+            <td>
+                  <code>10</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>download</code></td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em>. Defaults to False.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="typing.List">List</span>[<span title="typing.Dict">Dict</span>], None]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>typing.Union[typing.List[typing.Dict], None]: <em>description</em></p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>quantstream/modules/fundamentals.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_api_key</span><span class="p">(</span><span class="s2">&quot;fmp&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_income_statement</span><span class="p">(</span>
+    <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">period</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;annual&quot;</span><span class="p">,</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">download</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        symbol (str): _description_</span>
+<span class="sd">        period (str, optional): _description_. Defaults to &quot;annual&quot;.</span>
+<span class="sd">        limit (int, optional): _description_. Defaults to 10.</span>
+<span class="sd">        download (bool, optional): _description_. Defaults to False.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        typing.Union[typing.List[typing.Dict], None]: _description_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">apikey</span> <span class="o">=</span> <span class="n">GLOBAL_API_KEYS</span><span class="p">[</span><span class="s2">&quot;fmp&quot;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">income_statement</span><span class="p">(</span><span class="n">apikey</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">download</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="quantstream.modules.fundamentals.get_key_executives" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_key_executives</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span></code>
+
+<a href="#quantstream.modules.fundamentals.get_key_executives" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><em>summary</em></p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>symbol</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em></p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[<span title="typing.Dict">Dict</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>typing.Optional[typing.List[typing.Dict]]: <em>description</em></p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>quantstream/modules/fundamentals.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_api_key</span><span class="p">(</span><span class="s2">&quot;fmp&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_key_executives</span><span class="p">(</span><span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        symbol (str): _description_</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        typing.Optional[typing.List[typing.Dict]]: _description_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">apikey</span> <span class="o">=</span> <span class="n">GLOBAL_API_KEYS</span><span class="p">[</span><span class="s2">&quot;fmp&quot;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">key_executives</span><span class="p">(</span><span class="n">apikey</span><span class="p">,</span> <span class="n">symbol</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="quantstream.modules.fundamentals.get_market_capitalization" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_market_capitalization</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span></code>
+
+<a href="#quantstream.modules.fundamentals.get_market_capitalization" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p><em>summary</em></p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>symbol</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><em>description</em></p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[<span title="typing.Dict">Dict</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>typing.Optional[typing.List[typing.Dict]]: <em>description</em></p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>quantstream/modules/fundamentals.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@validate_api_key</span><span class="p">(</span><span class="s2">&quot;fmp&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_market_capitalization</span><span class="p">(</span><span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        symbol (str): _description_</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        typing.Optional[typing.List[typing.Dict]]: _description_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">apikey</span> <span class="o">=</span> <span class="n">GLOBAL_API_KEYS</span><span class="p">[</span><span class="s2">&quot;fmp&quot;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">market_capitalization</span><span class="p">(</span><span class="n">apikey</span><span class="p">,</span> <span class="n">symbol</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="quantstream.modules.option_chain"></a>
+    <div class="doc doc-contents first">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="quantstream.modules.economics"></a>
+    <div class="doc doc-contents first">
+
+        <p>Pull economic data from the St. Louis Federal Reserve's FRED API.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="quantstream.modules.economics.get_fred_series" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_fred_series</span><span class="p">(</span><span class="n">series_id</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span></code>
+
+<a href="#quantstream.modules.economics.get_fred_series" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Pulls economic data from the St. Louis Federal Reserve's FRED API.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>series_id</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The FRED series ID.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>start_date</code></td>
+            <td>
+                  <code><span title="datetime.date">date</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The start date for the data.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>end_date</code></td>
+            <td>
+                  <code><span title="datetime.date">date</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The end date for the data.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>pd.DataFrame: The economic data.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>quantstream/modules/economics.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_fred_series</span><span class="p">(</span>
+    <span class="n">series_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start_date</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pulls economic data from the St. Louis Federal Reserve&#39;s FRED API.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        series_id (str): The FRED series ID.</span>
+<span class="sd">        start_date (datetime.date): The start date for the data.</span>
+<span class="sd">        end_date (datetime.date): The end date for the data.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: The economic data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">api_key</span> <span class="o">=</span> <span class="n">GLOBAL_API_KEYS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;FRED&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">api_key</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;FRED API key is required to proceed.&quot;</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.stlouisfed.org/fred/series/observations?series_id=</span><span class="si">{</span><span class="n">series_id</span><span class="si">}</span><span class="s2">&amp;api_key=</span><span class="si">{</span><span class="n">api_key</span><span class="si">}</span><span class="s2">&amp;file_type=json&amp;observation_start=</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s2">&amp;observation_end=</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="s2">&quot;error_message&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;error_message&quot;</span><span class="p">])</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;observations&quot;</span><span class="p">])</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">])</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class=" text">
+    <p>SWAN © Copyright CERN 2016-2025. All rights reserved.</p>
+    <ul>
+        <li><a target="_blank" href="https://cern.ch/swan/">Home</a></li>
+        <li><a target="_blank" href="https://cern.ch/swan-community/">Community</a></li>
+        <li><a target="_blank" href="https://cern.service-now.com/service-portal/?id=functional_element&name=swan">Support</a></li>
+        <li><a target="_blank" href="https://github.com/swan-cern">Github</a></li>
+    </ul>
+    <p class="poweredby">Powered by <strong><a href="https://www.mkdocs.org">MkDocs</a></strong> and <strong><a href="https://squidfunk.github.io/mkdocs-material/"> Material for MkDocs</a></strong></p>
+</div>
+<div class="md-layout-grid--align-right logo">
+    <img src="../../images/logo_cern.png" alt="CERN">
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>
