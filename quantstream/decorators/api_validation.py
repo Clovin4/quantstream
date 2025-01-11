@@ -15,12 +15,12 @@ def prompt_for_api_key(service: str):
     GLOBAL_API_KEYS[service] = api_key
 
 
-def validate_api_key(service: str):
+def validate_api_key(service: str = "fmp"):
     """
     Decorator to ensure the API key for a service is set before making API calls.
 
     Args:
-        service (str): The name of the service to validate.
+        service (str): The name of the service to validate. Defaults to "fmp".
     """
 
     def decorator(func):
