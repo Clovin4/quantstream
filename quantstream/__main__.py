@@ -3,7 +3,7 @@ import os
 import typer
 from rich.console import Console
 
-from quantstream import version
+from quantstream.config import create_project_database, set_api_key
 
 app = typer.Typer(
     name="quantstream",
@@ -13,50 +13,17 @@ app = typer.Typer(
 console = Console()
 
 
-def version_callback(print_version: bool) -> None:
-    """Print the version of the package."""
-    if print_version:
-        console.print(f"[yellow]quantstream[/] version: [bold blue]{version}[/]")
-        raise typer.Exit()
+@app.command(name="create-db")
+def create_db(location: str, db_name: str):
+    """Create a new SQLite database for a project."""
+    create_project_database(location, db_name)
+    console.print(f"Database created at {os.path.join(location, db_name)}.")
 
-
-def confirm_api_keys_callback(show_api_keys: bool) -> None:
-    """Print the api keys."""
-    if show_api_keys:
-        console.print(f"[yellow]quantstream[/] version: [bold blue]{version}[/]")
-        # look for keys in environment variables
-        fmp_api_key = os.getenv("FMP_API_KEY")
-        console.print(f"[yellow]FMP_API_KEY[/]: [bold blue]{fmp_api_key}[/]")
-        raise typer.Exit()
-
-
-# TODO: rethink the command structure. Is the best use of this a cli that returns data or a package that returns data?
-# Could the cli be more usefull as a data pipeline tool? A feature engineering tool for machine learning?
-
-
-@app.command(name="")
-def main(
-    print_version: bool = typer.Option(
-        None,
-        "-v",
-        "--version",
-        callback=version_callback,
-        is_eager=True,
-        help="Prints the version of the quantstream package.",
-    ),
-    show_api_keys: bool = typer.Option(
-        None,
-        "-k",
-        "--keys",
-        callback=confirm_api_keys_callback,
-        is_eager=True,
-        help="Prints the api keys.",
-    ),
-) -> None:
-    """Main entry point for the quantstream package."""
-    console.print(
-        "Welcome to the quantstream package. Use the --help flag to see available commands."
-    )
+@app.command(name="set-api-key")
+def set_key(api_key: str, service: str):
+    """Set the API key for a specific service."""
+    set_api_key(api_key, service)
+    console.print(f"API key set for {service}.")
 
 
 if __name__ == "__main__":

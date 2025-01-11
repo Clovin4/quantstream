@@ -1,14 +1,12 @@
+from quantstream.decorators.api_validation import validate_api_key
+from fmpsdk import historical_price_full, historical_chart, quote
+from quantstream.datasets.findataset import FinDataset
+from quantstream.config import GLOBAL_API_KEYS
 import typing
 
-from .url_methods import __return_json_v3, __validate_time_delta
-from .urls import FMP_URLS
 
-fmp = FMP_URLS()
-
-
-def quote(
-    apikey: str, symbol: typing.Union[str, list[str]]
-) -> typing.Optional[list[dict]]:
+@validate_api_key("fmp")
+def get_quote(symbol: typing.Union[str, list[str]]) -> typing.Optional[list[dict]]:
     """Retrieve quote information for a given symbol or list of symbols.
 
     Args:
@@ -20,27 +18,24 @@ def quote(
             Each dictionary represents a quote and contains various fields such as symbol, price, volume, etc.
             Returns None if no quote information is available.
     """
-    if isinstance(symbol, list):
-        symbol = ",".join(symbol)
-    path = f"quote/{symbol}"
-    query_vars = {"apikey": apikey}
-    return __return_json_v3(path=path, params=query_vars)
+    apikey = GLOBAL_API_KEYS["fmp"]
+    data = quote(apikey, symbol)
+    return data
 
 
-def intraday(
-    apikey: str,
+@validate_api_key("fmp")
+def get_intraday(
     symbol: str,
     time_delta: str,
     from_date: str,
     to_date: str,
-    time_series: str = fmp.default_line_param,
-) -> typing.Optional[list[dict]]:
+    lean: bool = False,
+) -> "FinDataset":
     """Fetches intraday historical chart data for a given symbol.
 
     Args:
-        apikey (str): The API key for accessing the data.
         symbol (str): The symbol for the stock or security.
-        time_delta (str): The time interval for the data (e.g., '1min', '5min', '15min', '30min', '1hour').
+        time_delta (str): The time interval for the data (e.g., '1min', '5min', '15min', '30min', '1hour', '4hour).
         from_date (str): The starting date for the data in the format 'YYYY-MM-DD'.
         to_date (str): The ending date for the data in the format 'YYYY-MM-DD'.
         time_series (str, optional): The type of time series data to fetch. Defaults to fmp.default_line_param.
@@ -48,26 +43,18 @@ def intraday(
     Returns:
         typing.Optional[typing.List[typing.Dict]]: A list of dictionaries representing the intraday historical chart data.
     """
-    path = f"historical-chart/{__validate_time_delta(time_delta)}/{symbol}"
-    query_vars = {"apikey": apikey}
-    query_vars = {
-        "apikey": apikey,
-    }
-    if time_series:
-        query_vars["timeseries"] = time_series
-    if from_date:
-        query_vars["from"] = from_date
-    if to_date:
-        query_vars["to"] = to_date
-    return __return_json_v3(path=path, params=query_vars)
+    apikey = GLOBAL_API_KEYS["fmp"]
+    data = historical_chart(apikey, symbol, time_delta, from_date, to_date)
+    return FinDataset.from_json(data)
 
 
-def daily(
-    apikey: str,
+@validate_api_key("fmp")
+def get_daily(
     symbol: typing.Union[str, list],
     from_date: str = None,
     to_date: str = None,
-) -> typing.Optional[list[dict]]:
+    full: bool = False,
+) -> "FinDataset":
     """Fetches daily historical stock prices for the specified symbol(s).
 
     Args:
@@ -88,29 +75,11 @@ def daily(
         ValueError: If the API response indicates an error or an invalid request.
 
     """
-    if isinstance(symbol, list):
-        symbol = ",".join(symbol)
-    path = f"historical-price-full/{symbol}"
-    query_vars = {
-        "apikey": apikey,
-    }
+    apikey = GLOBAL_API_KEYS["fmp"]
+    data = historical_price_full(apikey, symbol, from_date, to_date)
+    ds = FinDataset.from_json(data)
 
-    if from_date:
-        query_vars["from"] = from_date
-    if to_date:
-        query_vars["to"] = to_date
+    if full:
+        return ds
 
-    res = __return_json_v3(path=path, params=query_vars)
-
-    if res.get("historicalStockList", res.get("historical", None)) is None:
-        if res.get("Error Message"):
-            raise ValueError(res["Error Message"])
-        else:
-            raise ValueError("Invalid request.")
-    else:
-        return_value = res.get("historicalStockList", res.get("historical", None))
-        sorted_res = sorted(
-            list(return_value),
-            key=lambda x: x["date"],
-        )
-        return sorted_res
+    return ds[["open", "high", "low", "close", "adjClose", "volume"]]

@@ -10,7 +10,6 @@ jobs:
         python-version:
           - '3.11'
           - '3.10'
-          - '3.9'
 
     steps:
     - uses: actions/checkout@v4
@@ -47,4 +46,4 @@ jobs:
     - name: Run tests
       env:
         FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
-      run: uv run pytest tests
+      run: uv run pytest quantstream/tests --cov=quantstream
